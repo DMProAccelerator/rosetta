@@ -13,7 +13,8 @@ object Settings {
 // output products. all cmdline arguments are passed straight to Chisel.
 object ChiselMain {
   def main(args: Array[String]): Unit = {
-    chiselMain(args, () => Module(new RosettaWrapper(Settings.myInstFxn)))
+    chiselMainTest(args, () => Module(new BinaryVecDot())) { c => new BinaryVecDotTest(c) }
+    //chiselMain(args, () => Module(new RosettaWrapper(Settings.myInstFxn)))
   }
 }
 

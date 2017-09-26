@@ -21,3 +21,7 @@ Rosetta is a project template to rapidly deploy Chisel accelerators on the Xilin
 1. Have a look at the hardware description under the src/main/scala -- the accelerator definition is in Accelerator.scala, the "entry point" for code generation is in Main.scala, and the infrastructure (where the magic happens) is in Rosetta.scala
 2. Have a look at the example application under src/main/cpp/app -- note that it uses the auto-generated register driver to access the hardware signals. The register driver will be generated in build/hw/driver
 3. Have a look at what the different Makefile targets generate inside the build/ folder. You can also try launching Vivado with the make launch_vivado_gui target after the project has been generated.
+
+## EXTRA STUFF :)
+sbt command for running tests:
+`run-main rosetta.ChiselMain --backend c --targetDir build/hw/cpp_emu --compile --test --genHarness`
