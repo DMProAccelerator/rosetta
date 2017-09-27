@@ -13,9 +13,23 @@ class BinaryVecDot() extends Module {
 }
 
 class BinaryVecDotTest(c: BinaryVecDot) extends Tester(c) {
-    poke(c.io.a, 7)
-    poke(c.io.b, 5)
+  for(i <- 0 until 20){
+    val a = rnd.nextInt(Math.pow(2, 32).toInt)
+    val b = rnd.nextInt(Math.pow(2, 32).toInt)
+    val andy = a & b
+
+    var expected_output = 0
+
+    for(j <- 0 until 32){
+      if((andy & (1<<j)) != 0){
+        expected_output+=1;
+      }
+    }
+
+    poke(c.io.a, a)
+    poke(c.io.b, b)
     step(1)
-    peek(c.io.out)
+    expect(c.io.out, expected_output)
+  }
 }
 
