@@ -6,7 +6,8 @@ import sys.process._
 object Settings {
   // Rosetta will use myInstFxn to instantiate your accelerator
   // edit below to change which accelerator will be instantiated
-  val myInstFxn = {() => new TestRegOps()}
+  //val myInstFxn = {() => new TestRegOps()}
+  val myInstFxn = {() => new TestVecVec()}
 }
 
 // call this object's main method to generate Chisel Verilog and C++ emulation
@@ -15,7 +16,7 @@ object ChiselMain {
   def main(args: Array[String]): Unit = {
     //chiselMainTest(args, () => Module(new BinaryVecDot())) { c => new BinaryVecDotTest(c) }
     chiselMainTest(args, () => Module(new VecVecDot())) { c => new VecVecDotTest(c) }
-      //chiselMain(args, () => Module(new RosettaWrapper(Settings.myInstFxn)))
+    //chiselMain(args, () => Module(new RosettaWrapper(Settings.myInstFxn)))
   }
 }
 

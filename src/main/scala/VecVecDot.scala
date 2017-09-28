@@ -3,12 +3,13 @@ import Chisel._
 
 class VecVecDot() extends Module {
     val io = new Bundle{
-        val a = UInt(INPUT, width=32)
-        val b = UInt(INPUT, width=32)
-        val write_enable = Bool(INPUT)
-        val reset = Bool(INPUT)
-        val out = UInt(OUTPUT, width=32)
-        val data_valid = Bool(OUTPUT)
+      val a = UInt(INPUT, width=32)
+      val b = UInt(INPUT, width=32)
+      val write_enable = Bool(INPUT)
+      val done = Bool(INPUT)
+      val reset = Bool(INPUT)
+      val out = UInt(OUTPUT, width=32)
+      val data_valid = Bool(OUTPUT)
     }
 
     val bvd = Module(new BinaryVecDot())
@@ -17,14 +18,15 @@ class VecVecDot() extends Module {
 
     bvd.io.a := io.a
     bvd.io.b := io.b
-   
-    when(io.write_enable){
+
+    when(io.write_enable && !io.done) {
       accumulator := accumulator + bvd.io.out
       accumulated := UInt(1)
     }
 
     when (io.reset) {
-      accumulator := UInt(0)  
+      accumulator := UInt(0)
+      accumulated := UInt(0)
     }
 
     io.data_valid := accumulated
@@ -39,6 +41,7 @@ class VecVecDotTest(c: VecVecDot) extends Tester(c) {
 
     step(1)
     poke(c.io.reset, 0)
+    poke(c.io.done, 0)
 
     val num_vec_parts = 2 + rnd.nextInt(3)
 
@@ -63,7 +66,6 @@ class VecVecDotTest(c: VecVecDot) extends Tester(c) {
       poke(c.io.a, a)
       poke(c.io.b, b)
       poke(c.io.write_enable, 1)
-
       step(1)
 
       while(peek(c.io.data_valid) != 1){
@@ -72,7 +74,12 @@ class VecVecDotTest(c: VecVecDot) extends Tester(c) {
       }
       peek(c.io.out)
     }
-
+    poke(c.io.done, 1)
+    step(1)
+    // We want to be able to keep the result around before resetting
+    // So i'm just testing if i can step forward without losing it
+    for(__ <- 0 until 10)
+        step(1)
     expect(c.io.out, expected_total_sum)
   }
 }

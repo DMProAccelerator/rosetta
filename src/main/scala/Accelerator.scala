@@ -2,6 +2,36 @@ package rosetta
 
 import Chisel._
 
+class TestVecVec() extends RosettaAccelerator {
+  val numMemPorts = 0
+  val io = new RosettaAcceleratorIF(numMemPorts) {
+    val vec_a = UInt(INPUT, width=32)
+    val vec_b = UInt(INPUT, width=32)
+    val write_enable = Bool(INPUT)
+    val done = Bool(INPUT)
+    val reset = Bool(INPUT)
+    val out = UInt(OUTPUT, width=32)
+    val cc = UInt(OUTPUT)        
+  }
+
+  val vvd = Module(new VecVecDot()).io
+  vvd.a := io.vec_a
+  vvd.b := io.vec_b
+  vvd.write_enable := io.write_enable
+  vvd.done := io.done
+  vvd.reset := io.reset
+  io.out := vvd.out
+
+  val valid = UInt(0)
+  valid := vvd.data_valid
+
+  val regCC = Reg(init=UInt(0, 32))
+  io.cc := regCC
+  regCC := regCC + UInt(1)
+
+  io.signature := makeDefaultSignature()
+}
+
 // add your custom accelerator here, derived from RosettaAccelerator
 
 // here we have a test for register reads and writes: add two 64-bit values
