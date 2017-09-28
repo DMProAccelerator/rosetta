@@ -24,4 +24,5 @@ Rosetta is a project template to rapidly deploy Chisel accelerators on the Xilin
 
 ## EXTRA STUFF :)
 sbt command for running tests:
+
 `run-main rosetta.ChiselMain --backend c --targetDir build/hw/cpp_emu --compile --test --genHarness`
