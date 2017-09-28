@@ -12,22 +12,72 @@ class VecVecDot() extends Module {
     }
 
     val bvd = Module(new BinaryVecDot())
-    val accumulator = Reg(init=UInt(0, 16))
-    val accumulated = Reg(init=UInt(0))
+    val accumulator = Reg(init=UInt(0, 32))
+    val accumulated = Reg(init=UInt(0, 1))
 
-    bvd.io.a = io.a
-    bvd.io.b = io.b
+    bvd.io.a := io.a
+    bvd.io.b := io.b
+   
+    when(accumulated === UInt(0)){
+      accumulator := accumulator + bvd.io.out
+      accumulated := UInt(1)
+    }
 
-    accumulator := accumulator + bvd.io.out
-    io.out := accumulator
-
-    when (io.write_enable === Bool(True)) {
-        accumulated := UInt(1)
-    } .elsewhen (io.reset) {
+    when (io.write_enable) {
         accumulated := UInt(0)
     }
 
+    when (io.reset) {
+      accumulator := UInt(0)  
+    }
+
+    io.out := accumulator
     io.data_valid := accumulated
 }
 
 
+class VecVecDotTest(c: VecVecDot) extends Tester(c) {
+  for(testNum <- 0 until 1){
+    poke(c.io.write_enable, 0)
+    poke(c.io.reset, 1)
+
+    step(1)
+    poke(c.io.reset, 0)
+
+    val num_vec_parts = 2 //+ rnd.nextInt(3)
+
+    var expected_total_sum = 0
+
+    for(_ <- 0 until num_vec_parts){
+      
+      //val a = rnd.nextInt(Math.pow(2, 32).toInt)
+      //val b = rnd.nextInt(Math.pow(2, 32).toInt)
+      val a = 0xf
+      val b = 0xf
+      val andy = a & b
+
+      var expected_partial_sum = 0
+
+      for(j <- 0 until 32){
+        if((andy & (1<<j)) != 0){
+          expected_partial_sum += 1;
+        }
+      }
+
+      expected_total_sum = expected_total_sum + expected_partial_sum
+
+      poke(c.io.a, a)
+      poke(c.io.b, b)
+
+      poke(c.io.write_enable, 1)
+
+      while(peek(c.io.data_valid) != 1){
+       step(1)
+       poke(c.io.write_enable, 0)
+      }
+      peek(c.io.out)
+    }
+
+    expect(c.io.out, expected_total_sum)
+  }
+}
