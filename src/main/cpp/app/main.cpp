@@ -13,11 +13,11 @@ void Run_TestVecVec(WrapperRegDriver* platform) {
   uint32_t a, b;
   cin >> a >> b;
 
+  t.set_reset(1);
+  t.set_reset(0);
   t.set_vec_a(a);
   t.set_vec_b(b);
   t.set_write_enable(1);
-  t.set_done(0);
-  t.set_done(1);
   t.set_write_enable(0);
 
   cout << "Result: " << t.get_out() << endl;
