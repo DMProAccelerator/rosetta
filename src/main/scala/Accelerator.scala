@@ -8,22 +8,21 @@ class TestVecVec() extends RosettaAccelerator {
     val vec_a = UInt(INPUT, width=32)
     val vec_b = UInt(INPUT, width=32)
     val write_enable = Bool(INPUT)
-    val done = Bool(INPUT)
     val reset = Bool(INPUT)
     val out = UInt(OUTPUT, width=32)
     val cc = UInt(OUTPUT)        
   }
+    
+  val prev_wen = Reg(init=UInt(0, 1))
+  prev_wen := io.write_enable
 
   val vvd = Module(new VecVecDot()).io
+  vvd.write_enable := io.write_enable & ~prev_wen
+
   vvd.a := io.vec_a
   vvd.b := io.vec_b
-  vvd.write_enable := io.write_enable
-  vvd.done := io.done
   vvd.reset := io.reset
   io.out := vvd.out
-
-  val valid = UInt(0)
-  valid := vvd.data_valid
 
   val regCC = Reg(init=UInt(0, 32))
   io.cc := regCC

@@ -6,30 +6,24 @@ class VecVecDot() extends Module {
       val a = UInt(INPUT, width=32)
       val b = UInt(INPUT, width=32)
       val write_enable = Bool(INPUT)
-      val done = Bool(INPUT)
       val reset = Bool(INPUT)
       val out = UInt(OUTPUT, width=32)
-      val data_valid = Bool(OUTPUT)
     }
 
     val bvd = Module(new BinaryVecDot())
     val accumulator = Reg(init=UInt(0, 32))
-    val accumulated = Reg(init=UInt(0, 1))
 
     bvd.io.a := io.a
     bvd.io.b := io.b
 
-    when(io.write_enable && !io.done) {
+    when(io.write_enable) {
       accumulator := accumulator + bvd.io.out
-      accumulated := UInt(1)
     }
 
     when (io.reset) {
       accumulator := UInt(0)
-      accumulated := UInt(0)
     }
 
-    io.data_valid := accumulated
     io.out := accumulator
 }
 
@@ -41,7 +35,6 @@ class VecVecDotTest(c: VecVecDot) extends Tester(c) {
 
     step(1)
     poke(c.io.reset, 0)
-    poke(c.io.done, 0)
 
     val num_vec_parts = 2 + rnd.nextInt(3)
 
@@ -68,16 +61,10 @@ class VecVecDotTest(c: VecVecDot) extends Tester(c) {
       poke(c.io.write_enable, 1)
       step(1)
 
-      while(peek(c.io.data_valid) != 1){
-        poke(c.io.write_enable, 0)
-        step(1)
-      }
       peek(c.io.out)
     }
-    poke(c.io.done, 1)
+    poke(c.io.write_enable, 0)
     step(1)
-    // We want to be able to keep the result around before resetting
-    // So i'm just testing if i can step forward without losing it
     for(__ <- 0 until 10)
         step(1)
     expect(c.io.out, expected_total_sum)
