@@ -16,6 +16,7 @@ object ChiselMain {
   def main(args: Array[String]): Unit = {
     //chiselMainTest(args, () => Module(new BinaryVecDot())) { c => new BinaryVecDotTest(c) }
     //chiselMainTest(args, () => Module(new VecVecDot())) { c => new VecVecDotTest(c) }
+    //chiselMainTest(args, () => Module(new BitPadder(32))) { c => new BitPadderTest(c) }
     chiselMain(args, () => Module(new RosettaWrapper(Settings.myInstFxn)))
   }
 }

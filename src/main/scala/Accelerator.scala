@@ -17,6 +17,17 @@ class TestVecVec() extends RosettaAccelerator {
   prev_wen := io.write_enable
 
   val vvd = Module(new VecVecDot()).io
+  val padderA = Module(new BitPadder(32)).io
+  val padderB = Module(new BitPadder(32)).io
+  
+  padderA.in := io.vec_a
+  padderA.usefulBits := SInt(32)
+
+  padderB.in := io.vec_b
+  padderB.usefulBits := SInt(32)
+
+  vvd.a := padderA.out
+  vvd.b := padderB.out
   vvd.write_enable := io.write_enable & ~prev_wen
 
   vvd.a := io.vec_a
