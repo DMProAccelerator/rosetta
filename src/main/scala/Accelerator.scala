@@ -1,6 +1,9 @@
 package rosetta
 
 import Chisel._
+import fpgatidbits.dma._
+import fpgatidbits.streams._
+import fpgatidbits.PlatformWrapper._
 
 class TestDRAM() extends RosettaAccelerator {
   val numMemPorts = 3
