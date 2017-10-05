@@ -7,7 +7,8 @@ object Settings {
   // Rosetta will use myInstFxn to instantiate your accelerator
   // edit below to change which accelerator will be instantiated
   //val myInstFxn = {() => new TestRegOps()}
-  val myInstFxn = {() => new TestVecVec()}
+  //val myInstFxn = {() => new TestVecVec()}
+  val myInstFxn = {() => new TestDRAM()}
 }
 
 // call this object's main method to generate Chisel Verilog and C++ emulation

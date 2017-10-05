@@ -2,6 +2,82 @@ package rosetta
 
 import Chisel._
 
+class TestDRAM() extends RosettaAccelerator {
+  val numMemPorts = 3
+  val io = new RosettaAcceleratorIF(numMemPorts) {
+    val start = Bool(INPUT)
+    val finished = Bool(OUTPUT)
+    val addrA = UInt(INPUT, width=64)
+    val addrB = UInt(INPUT, width=64)
+    val addrR = UInt(INPUT, width=64)
+    val byteCount = UInt(INPUT, width=32)
+  }
+   
+  val rdP = new StreamReaderParams(
+    streamWidth = 32,
+    fifoElems = 8,
+    mem = PYNQParams.toMemReqParams(),
+    maxBeats = 1,
+    chanID = 0,
+    disableThrottle = true
+  )
+  val reader1 = Module(new StreamReader(rdP)).io
+  val reader2 = Module(new StreamReader(rdP)).io
+  reader1.start := io.start
+  reader2.start := io.start
+
+  reader1.baseAddr := io.addrA
+  reader2.baseAddr := io.addrB
+  reader1.byteCount := io.byteCount
+  reader2.byteCount := io.byteCount
+
+  reader1.req <> io.memPort(0).memRdReq
+  reader2.req <> io.memPort(1).memRdReq
+  io.memPort(0).memRdRsp <> reader1.rsp
+  io.memPort(1).memRdRsp <> reader2.rsp
+
+  // unused write ports for streamreaders
+  io.memPort(0).memWrReq.valid := Bool(false)
+  io.memPort(0).memWrDat.valid := Bool(false)
+  io.memPort(0).memWrRsp.ready := Bool(false)
+  io.memPort(1).memWrReq.valid := Bool(false)
+  io.memPort(1).memWrDat.valid := Bool(false)
+  io.memPort(1).memWrRsp.ready := Bool(false)
+
+  val vvd = Module(new NewVecVecDot()).io
+
+  reader1.out <> vvd.a
+  reader2.out <> vvd.b
+
+  vvd.finished := reader1.finished & reader2.finished
+
+  val wrP = new StreamWriterParams(
+    streamWidth = 32,
+    mem = PYNQParams.toMemReqParams(),
+    chanID = 1,
+    maxBeats = 1
+  )
+  val writer = Module(new StreamWriter(wrP)).io
+  
+  writer.in <> vvd.out
+  writer.start := io.start
+  when (writer.finished) {
+    vvd.reset := Bool(true)
+    io.finished := Bool(true)  
+  }
+
+  writer.req <> io.memPort(2).memWrReq
+  io.memPort(2).memWrDat <> writer.wdat
+  io.memPort(2).memWrRsp <> writer.rsp
+  
+  // unused read ports for streamwriter
+  io.memPort(2).memRdReq.valid := Bool(false)
+  io.memPort(2).memRdRsp.ready := Bool(false)
+
+
+  io.signature := makeDefaultSignature()
+}
+
 class TestVecVec() extends RosettaAccelerator {
   val numMemPorts = 0
   val io = new RosettaAcceleratorIF(numMemPorts) {
