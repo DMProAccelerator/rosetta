@@ -39,44 +39,38 @@ class TestDRAM() extends RosettaAccelerator {
   io.memPort(0).memRdRsp <> reader1.rsp
   io.memPort(1).memRdRsp <> reader2.rsp
 
-  // unused write ports for streamreaders
-  io.memPort(0).memWrReq.valid := Bool(false)
-  io.memPort(0).memWrDat.valid := Bool(false)
-  io.memPort(0).memWrRsp.ready := Bool(false)
-  io.memPort(1).memWrReq.valid := Bool(false)
-  io.memPort(1).memWrDat.valid := Bool(false)
-  io.memPort(1).memWrRsp.ready := Bool(false)
+  plugMemWritePort(0)
+  plugMemWritePort(1)
 
   val vvd = Module(new NewVecVecDot()).io
 
-  reader1.out <> vvd.a
-  reader2.out <> vvd.b
+  vvd.reset := Bool(false)
+  vvd.a <> reader1.out
+  vvd.b <> reader2.out
 
   vvd.finished := reader1.finished & reader2.finished
 
   val wrP = new StreamWriterParams(
     streamWidth = 32,
     mem = PYNQParams.toMemReqParams(),
-    chanID = 1,
-    maxBeats = 1
+    chanID = 0
   )
   val writer = Module(new StreamWriter(wrP)).io
-  
+  writer.baseAddr := io.addrR
+  writer.byteCount := UInt(4)
+
   writer.in <> vvd.out
   writer.start := io.start
+  io.finished := Bool(false)
   when (writer.finished) {
     vvd.reset := Bool(true)
     io.finished := Bool(true)  
   }
 
   writer.req <> io.memPort(2).memWrReq
-  io.memPort(2).memWrDat <> writer.wdat
+  writer.wdat <> io.memPort(2).memWrDat
   io.memPort(2).memWrRsp <> writer.rsp
-  
-  // unused read ports for streamwriter
-  io.memPort(2).memRdReq.valid := Bool(false)
-  io.memPort(2).memRdRsp.ready := Bool(false)
-
+  plugMemReadPort(2)
 
   io.signature := makeDefaultSignature()
 }

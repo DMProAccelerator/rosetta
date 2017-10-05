@@ -10,6 +10,9 @@ class NewVecVecDot() extends Module {
     val out = Decoupled(UInt(OUTPUT, width=32))
   }
 
+  io.a.ready := Bool(true)
+  io.b.ready := Bool(true)
+
   val accumulator = Reg(init=UInt(0, 32))
   val done = Reg(init=UInt(0, 1))
   

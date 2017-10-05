@@ -3,6 +3,7 @@ build/
 test_run_dir/*
 ### XilinxISE template
 # intermediate build files
+*.jou
 *.bgn
 *.bit
 *.bld

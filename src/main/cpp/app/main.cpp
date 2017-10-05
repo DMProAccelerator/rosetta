@@ -51,7 +51,7 @@ void Run_TestAccelerator(WrapperRegDriver* platform) {
   uint32_t expectedResult = 0;
   uint32_t binaryProduct = a & b;
   for(int i = 0; i < 8*sizeof(uint32_t); i++){
-    res += ((1 << i) & binaryProduct) != 0;
+    expectedResult += ((1 << i) & binaryProduct) != 0;
   }
   
   // Wait until finished
