@@ -1,72 +1,57 @@
 package rosetta
 import Chisel._
 
-class VecVecDot() extends Module {
-    val io = new Bundle{
-      val a = UInt(INPUT, width=32)
-      val b = UInt(INPUT, width=32)
-      val write_enable = Bool(INPUT)
-      val reset = Bool(INPUT)
-      val out = UInt(OUTPUT, width=32)
+// Copying the structue of fpgatidbits StreamReducer
+// to make our vector-vector scalar product
+
+class NewVecVecDot(w: Int) extends Module {
+  val io = new Bundle{
+    val start = Bool(INPUT)
+    val a = Decoupled(UInt(INPUT, width=w)).flip
+    val b = Decoupled(UInt(INPUT, width=w)).flip
+    val byte_count = UInt(INPUT, width=32)
+    val finished = Bool(OUTPUT)
+    val out = Decoupled(UInt(OUTPUT, width=32))
+  }
+
+  val s_idle :: s_running :: s_finished :: Nil = Enum(UInt(), 3)
+  val state = Reg(init=UInt(s_idle))
+  val acc = Reg(init=UInt(0, 32))
+  val bytes_left = Reg(init=UInt(0, 32))
+  val bytes_per_elem = w/8 // e.g: 32 / 8 -> 4
+
+  // Defaults values
+  io.finished := Bool(false)
+  io.out.bits := acc
+  io.out.valid := Bool(false)
+  io.a.ready := Bool(false)
+  io.b.ready := Bool(false)
+
+  switch(state) {
+    is(s_idle) {
+      acc := UInt(0)
+      bytes_left := io.byte_count
+      when (io.start) { state := s_running }
     }
-
-    val bvd = Module(new BinaryVecDot())
-    val accumulator = Reg(init=UInt(0, 32))
-
-    bvd.io.a := io.a
-    bvd.io.b := io.b
-
-    when(io.write_enable) {
-      accumulator := accumulator + bvd.io.out
-    }
-
-    when (io.reset) {
-      accumulator := UInt(0)
-    }
-
-    io.out := accumulator
-}
-
-
-class VecVecDotTest(c: VecVecDot) extends Tester(c) {
-  for(testNum <- 0 until 10){
-    poke(c.io.write_enable, 0)
-    poke(c.io.reset, 1)
-
-    step(1)
-    poke(c.io.reset, 0)
-
-    val num_vec_parts = 2 + rnd.nextInt(3)
-
-    var expected_total_sum = 0
-
-    for(_ <- 0 until num_vec_parts){
-      
-      val a = rnd.nextInt(Math.pow(2, 32).toInt)
-      val b = rnd.nextInt(Math.pow(2, 32).toInt)
-      val andy = a & b
-
-      var expected_partial_sum = 0
-
-      for(j <- 0 until 32){
-        if((andy & (1<<j)) != 0){
-          expected_partial_sum += 1;
+    is(s_running) {
+      when (bytes_left === UInt(0)) { state := s_finished }
+      .otherwise {
+        io.a.ready := Bool(true)
+        io.b.ready := Bool(true)
+        when (io.a.valid & io.b.valid) {
+          acc := acc + PopCount(io.a.bits & io.b.bits)
+          bytes_left := bytes_left - UInt(bytes_per_elem)
         }
       }
-
-      expected_total_sum = expected_total_sum + expected_partial_sum
-
-      poke(c.io.a, a)
-      poke(c.io.b, b)
-      poke(c.io.write_enable, 1)
-      step(1)
-
-      peek(c.io.out)
     }
-    poke(c.io.write_enable, 0)
-    step(1)
-    for(__ <- 0 until 10)
-        step(1)
-    expect(c.io.out, expected_total_sum)
+    is(s_finished) {
+      io.finished := Bool(true)
+      io.out.valid := Bool(true)
+      when (!io.start) { state := s_idle }
+    } 
+
   }
+
 }
+
+
