@@ -44,7 +44,7 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   t.set_byteCount(nBytes);
   
   // Start
-  t.set_start(0); // must begin off to let the statemachines go to idle
+  t.set_start(0);
   t.set_start(1);
 
   // Compute expected result, poor man's popcount
@@ -55,21 +55,23 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   }
   
   // Wait until finished
-  while(t.get_finished() != 1);
-  
-  // Output to user
-  AccelReg res = t.get_out();
-  cout << "Computed result was " << res << ", expected result was " << expectedResult << endl;
-
-  t.set_start(0);
-
-  // Copy result into main memory
-  //platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+  while(t.get_finished() != 1) {
+    t.set_start(0);
+    t.set_start(1);
+  }
 
   platform->deallocAccelBuffer(dramBufferVec0);
   platform->deallocAccelBuffer(dramBufferVec1);
   //platform->deallocAccelBuffer(dramBufferResult);
 
+  // Output to user
+  AccelReg res = t.get_out();
+  cout << "Computed result was " << res << ", expected result was " << expectedResult << endl;
+
+  // Copy result into main memory
+  //platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+
+  t.set_start(0);
 } 
 
 int main()
