@@ -4,7 +4,7 @@ import Chisel._
 // Copying the structue of fpgatidbits StreamReducer
 // to make our vector-vector scalar product
 
-class NewVecVecDot(w: Int) extends Module {
+class VecVecDot(w: Int) extends Module {
   val io = new Bundle{
     val start = Bool(INPUT)
     val a = Decoupled(UInt(INPUT, width=w)).flip

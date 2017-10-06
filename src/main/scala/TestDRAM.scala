@@ -12,7 +12,7 @@ class TestDRAM() extends RosettaAccelerator {
     val finished = Bool(OUTPUT)
     val addrA = UInt(INPUT, width=64)
     val addrB = UInt(INPUT, width=64)
-    val addrR = UInt(INPUT, width=64)
+    //val addrR = UInt(INPUT, width=64)
     val out = UInt(OUTPUT, width=32)
     val byteCount = UInt(INPUT, width=32)
   }
@@ -43,24 +43,22 @@ class TestDRAM() extends RosettaAccelerator {
   plugMemWritePort(0)
   plugMemWritePort(1)
 
-  /*
-  val wrP = new StreamWriterParams(
-    streamWidth = 32,
-    mem = PYNQParams.toMemReqParams(),
-    chanID = 0
-  )
-  val writer = Module(new StreamWriter(wrP)).io
-  writer.baseAddr := io.addrR
-  writer.byteCount := io.byteCount
-  writer.start := io.start
+  //val wrP = new StreamWriterParams(
+  //  streamWidth = 32,
+  //  mem = PYNQParams.toMemReqParams(),
+  //  chanID = 0
+  //)
+  //val writer = Module(new StreamWriter(wrP)).io
+  //writer.baseAddr := io.addrR
+  //writer.byteCount := io.byteCount
+  //writer.start := io.start
 
-  writer.req <> io.memPort(2).memWrReq
-  writer.wdat <> io.memPort(2).memWrDat
-  io.memPort(2).memWrRsp <> writer.rsp
-  plugMemReadPort(2)
-  */
+  //writer.req <> io.memPort(2).memWrReq
+  //writer.wdat <> io.memPort(2).memWrDat
+  //io.memPort(2).memWrRsp <> writer.rsp
+  //plugMemReadPort(2)
 
-  val vvd = Module(new NewVecVecDot(32)).io
+  val vvd = Module(new VecVecDot(32)).io
   vvd.start := io.start
   vvd.byte_count := io.byteCount
   reader1.out <> vvd.a
