@@ -9,6 +9,7 @@ object Settings {
   //val myInstFxn = {() => new TestRegOps()}
   //val myInstFxn = {() => new TestVecVec()}
   val myInstFxn = {() => new TestDRAM()}
+  //val myInstFxn = {() => new DRAMExample()}
 }
 
 // call this object's main method to generate Chisel Verilog and C++ emulation

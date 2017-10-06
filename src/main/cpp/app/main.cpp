@@ -4,10 +4,54 @@ using namespace std;
 
 #include "platform.h"
 
-#include "TestDRAM.hpp"
+/*
+#include "DRAMExample.hpp"
+void Run_DRAMExample(WrapperRegDriver * platform) {
+  DRAMExample t(platform);
 
+  cout << "Signature: " << hex << t.get_signature() << dec << endl;
+  unsigned int ub = 0;
+  // why divisible by 16? fpgatidbits DMA components may not work if the
+  // number of bytes is not divisible by 64. since we are using 4-byte words,
+  // 16*4=64 ensures divisibility.
+  cout << "Enter upper bound of sum sequence, divisible by 16: " << endl;
+  cin >> ub;
+  if(ub % 16 != 0) {
+    cout << "Error: Upper bound must be divisible by 16" << endl;
+    return;
+  }
+
+  unsigned int * hostBuf = new unsigned int[ub];
+  unsigned int bufsize = ub * sizeof(unsigned int);
+  unsigned int golden = (ub*(ub+1))/2;
+
+  for(unsigned int i = 0; i < ub; i++) { hostBuf[i] = i+1; }
+
+  void * accelBuf = platform->allocAccelBuffer(bufsize);
+  platform->copyBufferHostToAccel(hostBuf, accelBuf, bufsize);
+
+  t.set_baseAddr((AccelDblReg) accelBuf);
+  t.set_byteCount(bufsize);
+
+  t.set_start(1);
+
+  while(t.get_finished() != 1);
+
+  platform->deallocAccelBuffer(accelBuf);
+  delete [] hostBuf;
+
+  AccelReg res = t.get_sum();
+  cout << "Result = " << res << " expected " << golden << endl;
+  unsigned int cc = t.get_cycleCount();
+  cout << "#cycles = " << cc << " cycles per word = " << (float)cc/(float)ub << endl;
+  t.set_start(0);
+}
+*/
+
+
+#include "TestDRAM.hpp"
 // Testing reading from DRAM, multiplying vectors, writing back
-void Run_TestAccelerator(WrapperRegDriver* platform) {
+void Run_TestDRAM(WrapperRegDriver* platform) {
   TestDRAM t(platform);
     
   cout << "Signature: " << hex << t.get_signature() << dec << endl;
@@ -23,7 +67,7 @@ void Run_TestAccelerator(WrapperRegDriver* platform) {
   // Input vectors, rounded to contain all input
   uint32_t vec0[(nBytes + sizeof(uint32_t) - 1)/sizeof(uint32_t)];
   uint32_t vec1[(nBytes + sizeof(uint32_t) - 1)/sizeof(uint32_t)];
-  uint32_t result;
+  //uint32_t result;
 
   // Set vectors
   vec0[0] = a;
@@ -32,7 +76,7 @@ void Run_TestAccelerator(WrapperRegDriver* platform) {
   // Allocate DRAM memory
   void * dramBufferVec0 = platform->allocAccelBuffer(nBytes);
   void * dramBufferVec1 = platform->allocAccelBuffer(nBytes);
-  void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
+  //void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
   
   // Copy vectors to DRAM
   platform->copyBufferHostToAccel(vec0, dramBufferVec0, nBytes);
@@ -41,7 +85,7 @@ void Run_TestAccelerator(WrapperRegDriver* platform) {
   //Initialize 
   t.set_addrA((AccelDblReg) dramBufferVec0);
   t.set_addrB((AccelDblReg) dramBufferVec1);
-  t.set_addrR((AccelDblReg) dramBufferResult);
+  //t.set_addrR((AccelDblReg) dramBufferResult);
   t.set_byteCount(nBytes);
   
   // Start
@@ -55,13 +99,19 @@ void Run_TestAccelerator(WrapperRegDriver* platform) {
   }
   
   // Wait until finished
-  while(!t.get_finished());
+  while(t.get_finished() != 1);
+  
+  // Output to user
+  AccelReg res = t.get_out();
+  cout << "Computed result was " << res << ", expected result was " << expectedResult << endl;
 
   // Copy result into main memory
-  platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+  //platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
 
-  // Output to user
-  cout << "Computed result was " << result << ", expected result was " << expectedResult << endl;
+  platform->deallocAccelBuffer(dramBufferVec0);
+  platform->deallocAccelBuffer(dramBufferVec1);
+  //platform->deallocAccelBuffer(dramBufferResult);
+  t.set_start(0);
 
 } 
 
@@ -70,7 +120,8 @@ int main()
   WrapperRegDriver * platform = initPlatform();
 
   //Run_TestRegOps(platform);
-  Run_TestAccelerator(platform);
+  //Run_DRAMExample(platform);
+  Run_TestDRAM(platform);
 
   deinitPlatform(platform);
 
