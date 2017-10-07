@@ -16,18 +16,16 @@ class TestDRAM() extends RosettaAccelerator {
     val out = UInt(OUTPUT, width=32)
     val byteCount = UInt(INPUT, width=32)
   }
-   
-  val rdP = new StreamReaderParams(
-    streamWidth = 32,
-    fifoElems = 8,
-    mem = PYNQParams.toMemReqParams(),
-    maxBeats = 1,
-    chanID = 0,
-    disableThrottle = true
-  )
 
-  val reader1 = Module(new StreamReader(rdP)).io
-  val reader2 = Module(new StreamReader(rdP)).io
+  val reader1 = Module(new StreamReader(new StreamReaderParams(
+    streamWidth = 32, fifoElems = 8, mem = PYNQParams.toMemReqParams(),
+    maxBeats = 1, chanID = 0, disableThrottle = true
+  ))).io
+  val reader2 = Module(new StreamReader(new StreamReaderParams(
+    streamWidth = 32, fifoElems = 8, mem = PYNQParams.toMemReqParams(),
+    maxBeats = 1, chanID = 0, disableThrottle = true
+  ))).io
+
   reader1.start := io.start
   reader2.start := io.start
 
@@ -61,10 +59,17 @@ class TestDRAM() extends RosettaAccelerator {
   val vvd = Module(new VecVecDot(32)).io
   vvd.start := io.start
   vvd.byte_count := io.byteCount
-  reader1.out <> vvd.a
-  reader2.out <> vvd.b
   io.out := vvd.out.bits
   io.finished := vvd.finished
+
+  // We have to sync the input streams into the VecVecDot module
+  // because we want to compute pairwise results of the two streams
+  StreamSync(
+    inA = reader1.out, inB = reader2.out,
+    outA = vvd.a, outB = vvd.b,
+    queueOutput = true, queueInput = true
+  )
+
 
   io.signature := makeDefaultSignature()
 }
