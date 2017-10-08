@@ -41,7 +41,7 @@ class TestDRAM() extends RosettaAccelerator {
   plugMemWritePort(0)
   plugMemWritePort(1)
 
-  val vvd = Module(new VecVecDot(32)).io
+  val vvd = Module(new BinaryVecVec(32)).io
   vvd.start := io.start
   vvd.byte_count := io.byteCount
   io.out := vvd.out.bits
