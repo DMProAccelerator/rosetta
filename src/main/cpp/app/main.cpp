@@ -7,7 +7,7 @@ using namespace std;
 #include "platform.h"
 
 
-#include "TestDRAM.hpp"
+/*#include "TestDRAM.hpp"
 // Testing reading from DRAM, multiplying vectors, writing back
 void Run_TestDRAM(WrapperRegDriver* platform) {
   TestDRAM t(platform);
@@ -47,7 +47,7 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   // Allocate DRAM memory
   void * dramBufferVec0 = platform->allocAccelBuffer(nBytes);
   void * dramBufferVec1 = platform->allocAccelBuffer(nBytes);
-  //void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
+  void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
   
   // Copy vectors to DRAM
   platform->copyBufferHostToAccel(vec0, dramBufferVec0, nBytes);
@@ -56,7 +56,7 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   //Initialize 
   t.set_addrA((AccelDblReg) dramBufferVec0);
   t.set_addrB((AccelDblReg) dramBufferVec1);
-  //t.set_addrR((AccelDblReg) dramBufferResult);
+  t.set_addrR((AccelDblReg) dramBufferResult);
   t.set_byteCount(nBytes);
   
   // Start
@@ -69,19 +69,48 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
     //t.set_start(1);
   }
 
+  // Copy result into main memory
+  platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+
   platform->deallocAccelBuffer(dramBufferVec0);
   platform->deallocAccelBuffer(dramBufferVec1);
-  //platform->deallocAccelBuffer(dramBufferResult);
+  platform->deallocAccelBuffer(dramBufferResult);
 
   // Output to user
   AccelReg res = t.get_out();
   cout << "Computed result was " << res << ", expected result was " << expectedResult << endl;
 
-  // Copy result into main memory
-  //platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+  t.set_start(0);
+}*/ 
+
+#include "StreamWriterSample.hpp"
+void Run_StreamWriterSample(WrapperRegDriver* platform){
+  StreamWriterSample t(platform);
 
   t.set_start(0);
-} 
+
+  cout << "Signature: " << hex << t.get_signature() << dec << endl;
+
+  void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
+ 
+  t.set_addr((AccelDblReg) dramBufferResult);
+  cout<<"Output was "<<t.get_output()<<endl;
+  t.set_start(1);
+  cout<<"Output was "<<t.get_output()<<endl; 
+ 
+  while(t.get_finished() != 1) cout<<"Output is "<<t.get_output()<<endl;
+
+  uint32_t result;
+  
+  platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+  
+  cout<<"Expected result : " << t.get_output() <<endl;
+
+  cout<<"Result was "<< result << endl;
+
+  platform->deallocAccelBuffer(dramBufferResult);
+  t.set_start(0);
+}
 
 int main()
 {
@@ -89,7 +118,7 @@ int main()
 
   //Run_TestRegOps(platform);
   //Run_DRAMExample(platform);
-  Run_TestDRAM(platform);
+  Run_StreamWriterSample(platform);
 
   deinitPlatform(platform);
 
