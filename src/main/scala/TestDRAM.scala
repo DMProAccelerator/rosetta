@@ -41,35 +41,14 @@ class TestDRAM() extends RosettaAccelerator {
   plugMemWritePort(0)
   plugMemWritePort(1)
 
-  //val wrP = new StreamWriterParams(
-  //  streamWidth = 32,
-  //  mem = PYNQParams.toMemReqParams(),
-  //  chanID = 0
-  //)
-  //val writer = Module(new StreamWriter(wrP)).io
-  //writer.baseAddr := io.addrR
-  //writer.byteCount := io.byteCount
-  //writer.start := io.start
-
-  //writer.req <> io.memPort(2).memWrReq
-  //writer.wdat <> io.memPort(2).memWrDat
-  //io.memPort(2).memWrRsp <> writer.rsp
-  //plugMemReadPort(2)
-
   val vvd = Module(new VecVecDot(32)).io
   vvd.start := io.start
   vvd.byte_count := io.byteCount
   io.out := vvd.out.bits
   io.finished := vvd.finished
 
-  // We have to sync the input streams into the VecVecDot module
-  // because we want to compute pairwise results of the two streams
-  StreamSync(
-    inA = reader1.out, inB = reader2.out,
-    outA = vvd.a, outB = vvd.b,
-    queueOutput = true, queueInput = true
-  )
-
+  reader1.out <> vvd.a
+  reader2.out <> vvd.b
 
   io.signature := makeDefaultSignature()
 }
