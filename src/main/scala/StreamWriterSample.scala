@@ -19,6 +19,10 @@ class StreamWriterSample() extends RosettaAccelerator {
     val start = Bool(INPUT)
     val output = UInt(OUTPUT, width=32)
     val finished = Bool(OUTPUT)
+
+    val writer_error = Bool(OUTPUT)
+    val writer_ready = Bool(OUTPUT)
+
     val cc = UInt(OUTPUT, width=32)
   }
 
@@ -33,7 +37,7 @@ class StreamWriterSample() extends RosettaAccelerator {
 
 
   val wp = new StreamWriterParams(
-    streamWidth = 32,
+    streamWidth = 64,
     mem = PYNQParams.toMemReqParams(),
     chanID = 0
   )
@@ -46,7 +50,7 @@ class StreamWriterSample() extends RosettaAccelerator {
   }
 
   writer.baseAddr := io.addr
-  writer.byteCount := UInt(4)
+  writer.byteCount := UInt(8)
   writer.start := io.start
   writer.req <> io.memPort(0).memWrReq
   writer.wdat <> io.memPort(0).memWrDat
@@ -55,6 +59,9 @@ class StreamWriterSample() extends RosettaAccelerator {
   
   writer.in.bits := output_reg
   writer.in.valid := io.start
+
+  io.writer_error := writer.error
+  io.writer_ready := writer.in.ready
 
   io.finished := writer.finished
 
