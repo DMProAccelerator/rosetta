@@ -10,16 +10,16 @@ import Chisel._
 class BinaryVecVec(w: Int) extends Module {
   val io = new Bundle{
     val start = Bool(INPUT)
-    val a = Decoupled(UInt(INPUT, width=w)).flip
-    val b = Decoupled(UInt(INPUT, width=w)).flip
+    val a = Decoupled(UInt(width=w)).flip
+    val b = Decoupled(UInt(width=w)).flip
     val byte_count = UInt(INPUT, width=32)
     val finished = Bool(OUTPUT)
-    val out = Decoupled(UInt(OUTPUT, width=32))
+    val out = Decoupled(UInt(width=64))
   }
 
   val s_idle :: s_running :: s_finished :: Nil = Enum(UInt(), 3)
   val state = Reg(init=UInt(s_idle))
-  val acc = Reg(init=UInt(0, 32))
+  val acc = Reg(init=UInt(0, 64))
   val bytes_left = Reg(init=UInt(0, 32))
   val bytes_per_elem = w/8 // e.g: 32 / 8 -> 4
 
@@ -48,9 +48,11 @@ class BinaryVecVec(w: Int) extends Module {
       }
     }
     is(s_finished) {
-      io.finished := Bool(true)
-      io.out.valid := Bool(true)
       when (!io.start) { state := s_idle }
+      .otherwise {
+        io.finished := Bool(true)
+        io.out.valid := Bool(true)
+      }
     } 
   }
 }

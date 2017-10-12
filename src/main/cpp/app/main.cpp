@@ -7,7 +7,7 @@ using namespace std;
 #include "platform.h"
 
 
-/*#include "TestDRAM.hpp"
+#include "TestDRAM.hpp"
 // Testing reading from DRAM, multiplying vectors, writing back
 void Run_TestDRAM(WrapperRegDriver* platform) {
   TestDRAM t(platform);
@@ -47,7 +47,7 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   // Allocate DRAM memory
   void * dramBufferVec0 = platform->allocAccelBuffer(nBytes);
   void * dramBufferVec1 = platform->allocAccelBuffer(nBytes);
-  void * dramBufferResult = platform->allocAccelBuffer(sizeof(uint32_t));
+  void * dramBufferResult = platform->allocAccelBuffer(n * sizeof(uint64_t));
   
   // Copy vectors to DRAM
   platform->copyBufferHostToAccel(vec0, dramBufferVec0, nBytes);
@@ -58,31 +58,38 @@ void Run_TestDRAM(WrapperRegDriver* platform) {
   t.set_addrB((AccelDblReg) dramBufferVec1);
   t.set_addrR((AccelDblReg) dramBufferResult);
   t.set_byteCount(nBytes);
+  t.set_count(n);
   
   // Start
-  t.set_start(0);
   t.set_start(1);
 
   // Wait until finished
-  while(t.get_finished() != 1) {
-    //t.set_start(0);
-    //t.set_start(1);
-  }
+  while(t.get_finished() != 1);
 
   // Copy result into main memory
-  platform->copyBufferAccelToHost(dramBufferResult, &result, sizeof(uint32_t));
+  AccelReg res = t.get_out();
+  uint64_t *result = new uint64_t[n];
+  platform->copyBufferAccelToHost(dramBufferResult, result, n * sizeof(uint64_t));
+
+  t.set_start(0);
 
   platform->deallocAccelBuffer(dramBufferVec0);
   platform->deallocAccelBuffer(dramBufferVec1);
   platform->deallocAccelBuffer(dramBufferResult);
 
   // Output to user
-  AccelReg res = t.get_out();
   cout << "Computed result was " << res << ", expected result was " << expectedResult << endl;
 
-  t.set_start(0);
-}*/ 
+  cout << "DRAM: ";
+  for (int i = 0; i < n; ++i)
+    cout << result[i] << " ";
+  cout << endl;
 
+  delete[] result;
+}
+
+
+/*
 #include "StreamWriterSample.hpp"
 void Run_StreamWriterSample(WrapperRegDriver* platform){
   StreamWriterSample t(platform);
@@ -111,14 +118,15 @@ void Run_StreamWriterSample(WrapperRegDriver* platform){
   platform->deallocAccelBuffer(dramBufferResult);
   t.set_start(0);
 }
-
+*/
 int main()
 {
   WrapperRegDriver * platform = initPlatform();
 
   //Run_TestRegOps(platform);
   //Run_DRAMExample(platform);
-  Run_StreamWriterSample(platform);
+  //Run_StreamWriterSample(platform);
+  Run_TestDRAM(platform);
 
   deinitPlatform(platform);
 
