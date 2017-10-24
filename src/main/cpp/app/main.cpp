@@ -12,10 +12,10 @@
 using namespace std;
 #include "platform.h"
 
-#include "TestBMVM.hpp"
-void Run_TestBMVM(WrapperRegDriver* platform) 
+#include "TestBitplane.hpp"
+void Run_TestBitplane(WrapperRegDriver* platform) 
 {
-  TestBMVM t(platform);
+  TestBitplane t(platform);
 
   // Random 0/1 generator
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -29,7 +29,6 @@ void Run_TestBMVM(WrapperRegDriver* platform)
     cin >> r >> c;
     if (r == 0 || c == 0)
       break;
-
     uint32_t word_size = 64;
     uint32_t result_bytes = r * sizeof(int64_t);
     uint32_t vector_bytes = c * sizeof(int64_t);
@@ -53,7 +52,7 @@ void Run_TestBMVM(WrapperRegDriver* platform)
     R->cols = 1;
     R->M = (int64_t *) calloc(R->rows, sizeof(int64_t));
 
-    fill_matrix(W, 1);
+    fill_matrix(W, -1);
     fill_matrix(A, 1);
 
     matrix_t *software_result = software_GEMM(W, A);
@@ -62,57 +61,46 @@ void Run_TestBMVM(WrapperRegDriver* platform)
       printf("%ld ", software_result->M[i]);
     printf("\n\n");
 
-    // extract bitplanes and feed them to the FPGA
-    for (int w_depth = 0; w_depth < W->bit_depth; ++w_depth) {
-      for (int a_depth = 0; a_depth < A->bit_depth; ++a_depth) {
-  
-        int signW = w_depth == W->bit_depth - 1 ? -1 : 1;
-        int signA = a_depth == A->bit_depth - 1 ? -1 : 1;
-        int significance = (1 << (w_depth + a_depth));
-        int alpha = significance * signW * signA;
 
-        matrix_t *A_bitplane = extract_bitplane(A, a_depth);
-        matrix_t *W_bitplane = extract_bitplane(W, w_depth);
+    // Allocate DRAM memory
+    void * dram_buffer_vec = platform->allocAccelBuffer(vector_bytes);
+    void * dram_buffer_mat = platform->allocAccelBuffer(matrix_bytes);
+    void * dram_buffer_res = platform->allocAccelBuffer(result_bytes);
 
-        // Allocate DRAM memory
-        void * dram_buffer_vec = platform->allocAccelBuffer(vector_bytes);
-        void * dram_buffer_mat = platform->allocAccelBuffer(matrix_bytes);
-        void * dram_buffer_res = platform->allocAccelBuffer(result_bytes);
+    // Copy vectors to DRAM
+    platform->copyBufferHostToAccel(A->M, dram_buffer_vec, vector_bytes);
+    platform->copyBufferHostToAccel(W->M, dram_buffer_mat, matrix_bytes);
 
-        // Copy vectors to DRAM
-        platform->copyBufferHostToAccel(A_bitplane->M, dram_buffer_vec, vector_bytes);
-        platform->copyBufferHostToAccel(W_bitplane->M, dram_buffer_mat, matrix_bytes);
+    //Initialize 
+    t.set_addrV((AccelDblReg) dram_buffer_vec);
+    t.set_addrM((AccelDblReg) dram_buffer_mat);
+    t.set_addrR((AccelDblReg) dram_buffer_res);
+    t.set_numRows(r);
+    t.set_numCols(c);
+    t.set_stride(stride);
+    t.set_m_depth(W->bit_depth);
+    t.set_v_depth(A->bit_depth);
 
-        //Initialize 
-        t.set_addrV((AccelDblReg) dram_buffer_vec);
-        t.set_addrM((AccelDblReg) dram_buffer_mat);
-        t.set_addrR((AccelDblReg) dram_buffer_res);
-        t.set_numRows(r);
-        t.set_numCols(c);
-        t.set_stride(stride);
+    t.set_start(1);
 
-        t.set_start(1);
+    while (t.get_finished() != 1);
 
-        while (t.get_finished() != 1);
-
-        int64_t *result = (int64_t *) malloc(sizeof(int64_t) * R->rows);
-        platform->copyBufferAccelToHost(dram_buffer_res, result, result_bytes);
-        for (int i = 0; i < R->rows; ++i) {
-          result[i] *= alpha; // temporary scale with alpha outside fpga
-          R->M[i] += result[i];
-        }
-
-        platform->deallocAccelBuffer(dram_buffer_vec);
-        platform->deallocAccelBuffer(dram_buffer_mat);
-        platform->deallocAccelBuffer(dram_buffer_res);
-        t.set_start(0);  
-        
-        free(result);
-        free_matrix(A_bitplane);
-        free_matrix(W_bitplane);
-      }
+    int64_t *result = (int64_t *) malloc(sizeof(int64_t) * R->rows);
+    platform->copyBufferAccelToHost(dram_buffer_res, result, result_bytes);
+    cout << "DRAM:" << endl;
+    for (int i = 0; i < R->rows; ++i) {
+      cout << result[i] << " ";
+      R->M[i] += result[i];
     }
+    cout << endl;
+    free(result);
 
+    platform->deallocAccelBuffer(dram_buffer_vec);
+    platform->deallocAccelBuffer(dram_buffer_mat);
+    platform->deallocAccelBuffer(dram_buffer_res);
+    t.set_start(0);  
+
+    
     cout << "FINAL RESULT" << endl;
     for (int i = 0; i < R->rows; ++i)
       cout << R->M[i] << " ";
@@ -132,8 +120,9 @@ int main()
 {
   WrapperRegDriver * platform = initPlatform();
 
-  Run_TestBMVM(platform);
+  Run_TestBitplane(platform);
 
   deinitPlatform(platform);
   return 0;
 }
+
