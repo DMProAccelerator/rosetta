@@ -4,9 +4,7 @@ import Chisel._
 import sys.process._
 
 object Settings {
-  //val myInstFxn = {() => new TestDRAM()}
-  //val myInstFxn = {() => new TestBMVM(64, 4)}
-  val myInstFxn = {() => new TestBitplane(64, 4)}
+  val myInstFxn = {() => new TestBitserial(32, 8, 8)}
 }
 
 object ChiselMain {
