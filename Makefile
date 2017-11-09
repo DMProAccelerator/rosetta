@@ -1,7 +1,7 @@
 # target frequency for Vivado FPGA synthesis
-FREQ_MHZ := 150.0
+FREQ_MHZ := 50.0
 # controls whether Vivado will run in command-line or GUI mode
-VIVADO_MODE := batch # gui
+VIVADO_MODE := batch
 # which C++ compiler to use
 CC = g++
 # scp/rsync target to copy files to board

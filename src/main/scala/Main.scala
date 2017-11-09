@@ -4,7 +4,7 @@ import Chisel._
 import sys.process._
 
 object Settings {
-  val myInstFxn = {() => new TestBitserial(32, 8, 8)}
+  val myInstFxn = {() => new TestBinaryGEMM()}
 }
 
 object ChiselMain {
