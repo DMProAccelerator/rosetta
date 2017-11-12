@@ -12,4 +12,4 @@ lazy val rosettaSettings = Seq (
 )
 
 
-lazy val rosetta_template = (project in file(".")).settings(rosettaSettings: _*).dependsOn(ProjectRef(uri("https://github.com/belgaux/fpga-tidbits.git#pynq"), "fpgatidbits"))
+lazy val rosetta_template = (project in file(".")).settings(rosettaSettings: _*).dependsOn(ProjectRef(uri("https://github.com/maltanar/fpga-tidbits.git#pynq"), "fpgatidbits"))

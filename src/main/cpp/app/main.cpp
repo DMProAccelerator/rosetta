@@ -16,10 +16,10 @@ typedef uint64_t u64;
 typedef int32_t s32;
 typedef int64_t s64;
 
-#include "TestBinaryGEMM.hpp"
-void Run_TestBinaryGEMM(WrapperRegDriver* platform) 
+#include "TestBitserialGEMM.hpp"
+void Run_TestBitserialGEMM(WrapperRegDriver* platform) 
 {
-  TestBinaryGEMM t(platform);
+  TestBitserialGEMM t(platform);
  
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   std::mt19937_64 generator (seed);
@@ -40,7 +40,7 @@ void Run_TestBinaryGEMM(WrapperRegDriver* platform)
       s64 W[wr*wc];
 
       int ar = wc;
-      int ac = rr;
+      int ac = 1;
       int ad = 2;
 
       int out_rows = wr;
@@ -226,7 +226,7 @@ int main()
 {
   WrapperRegDriver * platform = initPlatform();
 
-  Run_TestBinaryGEMM(platform);
+  Run_TestBitserialGEMM(platform);
 
   deinitPlatform(platform);
   return 0;

@@ -5,10 +5,9 @@ import fpgatidbits.PlatformWrapper._
 import fpgatidbits.dma._
 import fpgatidbits.ocm._
 
-
 // Right-hand side must be given transposed
 
-class TestBinaryGEMM() extends RosettaAccelerator {
+class TestBitserialGEMM() extends RosettaAccelerator {
   val p = PYNQParams
   val word_size = 64
   val output_queue_size = 8
@@ -67,14 +66,28 @@ class TestBinaryGEMM() extends RosettaAccelerator {
   val lbit = Reg(init=UInt(0, width = 16))
   val rbit = Reg(init=UInt(0, width = 16))
 
-  // Index for result-matrix accumulators
-  val index = Reg(init=UInt(0))
-  index := row_rhs * io.lhs_rows + row_lhs
-
   // Accumulate result of all bitplanes for each row-pair
   val row_res = Reg(init=SInt(0, width=word_size))
   // Acuumulate AND-PCNT result within each bitplane row-pair
   val acc_dot_row = Reg(init=UInt(0, width=word_size))
+
+  // Parameters for stream readers and pipeline registers
+  val lhs_bytes_per_bitplane     = Reg(init=UInt(0))
+  val rhs_bytes_per_bitplane     = Reg(init=UInt(0))
+
+  val lhs_bytes_per_bitplane_tmp = Reg(init=UInt(0))
+  val rhs_bytes_per_bitplane_tmp = Reg(init=UInt(0))
+
+  val bytes_per_row              = Reg(init=UInt(0))
+
+  val lhs_base_addr              = Reg(init=UInt(0))
+  val rhs_base_addr              = Reg(init=UInt(0))
+
+  val lhs_row_stride             = Reg(init=UInt(0))
+  val rhs_row_stride             = Reg(init=UInt(0))
+
+  val lhs_bitplane_stride        = Reg(init=UInt(0))
+  val rhs_bitplane_stride        = Reg(init=UInt(0))
 
 
   /////// WIRES
@@ -109,17 +122,10 @@ class TestBinaryGEMM() extends RosettaAccelerator {
 
   ///////// INPUT
 
-  // TODO: Optimize these multiplications
-  val lhs_bytes_per_bitplane = bytes_per_elem * io.lhs_cols * io.lhs_rows
-  val rhs_bytes_per_bitplane = bytes_per_elem * io.rhs_rows * io.rhs_cols
-  val bytes_per_row = bytes_per_elem * io.lhs_cols
-
-  val lhs_reader = make_reader(port=0, 
-    baseAddr=io.lhs_addr + row_lhs * bytes_per_row + lbit * lhs_bytes_per_bitplane,
+  val lhs_reader = make_reader(port=0, baseAddr=lhs_base_addr,
     byteCount=bytes_per_row, start=Bool(false))
 
-  val rhs_reader = make_reader(port=1,
-    baseAddr=io.rhs_addr + row_rhs * bytes_per_row + rbit * rhs_bytes_per_bitplane,
+  val rhs_reader = make_reader(port=1, baseAddr=rhs_base_addr,
     byteCount=bytes_per_row, start=Bool(false))
 
   def start_readers() = {
@@ -138,7 +144,7 @@ class TestBinaryGEMM() extends RosettaAccelerator {
 
   ///////// STATE MACHINE
 
-  val s_idle :: s_inner :: s_inner_test :: s_inner_post :: s_rbit_test :: s_lbit_test :: s_row_lhs_test :: s_row_rhs_test :: s_wait :: s_done :: Nil = Enum(UInt(), 10)
+  val s_idle :: s_prep_reader_static0 :: s_prep_reader_static1 :: s_prep_reader_dynamic0 :: s_prep_reader_dynamic1 :: s_prep_reader_dynamic2 :: s_start_readers :: s_inner :: s_inner_test :: s_inner_post :: s_rbit_test :: s_lbit_test :: s_row_lhs_test :: s_row_rhs_test :: s_wait :: s_done :: Nil = Enum(UInt(), 16)
   val state = Reg(init=UInt(s_idle))
 
   switch (state) {
@@ -155,9 +161,46 @@ class TestBinaryGEMM() extends RosettaAccelerator {
       when (io.start) {
         assert(io.lhs_cols === io.rhs_cols)
 
-        start_readers()
-        state := s_inner
+        state := s_prep_reader_static0
       }
+    }
+
+    is (s_prep_reader_static0) {
+      bytes_per_row              := bytes_per_elem * io.lhs_cols
+      lhs_bytes_per_bitplane_tmp := bytes_per_elem * io.lhs_rows
+      rhs_bytes_per_bitplane_tmp := bytes_per_elem * io.rhs_rows
+      state := s_prep_reader_static1
+    }
+
+    is (s_prep_reader_static1) {
+      lhs_bytes_per_bitplane := lhs_bytes_per_bitplane_tmp * io.lhs_cols
+      rhs_bytes_per_bitplane := rhs_bytes_per_bitplane_tmp * io.rhs_cols
+      state := s_prep_reader_dynamic0
+    }
+    
+    is (s_prep_reader_dynamic0) {
+      lhs_row_stride      := row_lhs * bytes_per_row 
+      rhs_row_stride      := row_rhs * bytes_per_row 
+      lhs_bitplane_stride := lbit * lhs_bytes_per_bitplane
+      rhs_bitplane_stride := rbit * rhs_bytes_per_bitplane
+      state := s_prep_reader_dynamic1
+    }
+   
+    is (s_prep_reader_dynamic1) {
+      lhs_base_addr := io.lhs_addr + lhs_row_stride
+      rhs_base_addr := io.rhs_addr + rhs_row_stride
+      state := s_prep_reader_dynamic2
+    } 
+
+    is (s_prep_reader_dynamic2) {
+      lhs_base_addr := lhs_base_addr + lhs_bitplane_stride
+      rhs_base_addr := rhs_base_addr + rhs_bitplane_stride
+      state := s_start_readers
+    }
+
+    is (s_start_readers) {
+      start_readers()
+      state := s_inner
     }
 
     is (s_inner) {
@@ -199,8 +242,7 @@ class TestBinaryGEMM() extends RosettaAccelerator {
         state := s_lbit_test
       }
       .otherwise {
-        start_readers()
-        state := s_inner
+        state := s_prep_reader_dynamic0
       }
     }
 
@@ -215,8 +257,7 @@ class TestBinaryGEMM() extends RosettaAccelerator {
         state := s_row_lhs_test
       }
       .otherwise {
-        start_readers()
-        state := s_inner
+        state := s_prep_reader_dynamic0
       }
     }
 
@@ -228,8 +269,7 @@ class TestBinaryGEMM() extends RosettaAccelerator {
         state := s_row_rhs_test
       }
       .otherwise {
-        start_readers()
-        state := s_inner
+        state := s_prep_reader_dynamic0
       }
     }
 
@@ -239,8 +279,7 @@ class TestBinaryGEMM() extends RosettaAccelerator {
         state := s_wait
       }
       .otherwise {
-        start_readers()
-        state := s_inner
+        state := s_prep_reader_dynamic0
       }
     }
 
