@@ -40,7 +40,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       s64 W[wr*wc];
 
       int ar = wc;
-      int ac = 1;
+      int ac = rr;
       int ad = 2;
 
       int out_rows = wr;
@@ -48,6 +48,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
 
       int lhs_issigned = 1;
       int rhs_issigned = 1;
+      int num_chn = 1;
       
       /////////// W
       for (int i = 0; i < wr; ++i) {
@@ -167,7 +168,6 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       t.set_lhs_addr((AccelDblReg) dram_w);
       t.set_rhs_addr((AccelDblReg) dram_a);
       t.set_res_addr((AccelDblReg) dram_r);
-      t.set_res_byte_count(r_bytes);
 
       t.set_lhs_rows(wpr);
       t.set_lhs_cols(wpc);
@@ -178,6 +178,8 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       t.set_rhs_cols(apc);
       t.set_rhs_bits(apd);
       t.set_rhs_issigned(rhs_issigned);
+
+      t.set_num_chn(num_chn);
 
       t.set_start(1);
       while (t.get_done()!=1);

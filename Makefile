@@ -76,4 +76,4 @@ rsync:
 
 # remove everything that is built
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf $(BUILD_DIR) *.jou *.log .Xil/
