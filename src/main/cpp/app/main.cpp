@@ -25,6 +25,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   std::mt19937_64 generator (seed);
   std::uniform_int_distribution<s64> distribution(0, 1); 
+  printf("Hello world\n");
 
 
   // loops for testing lots of matrices
