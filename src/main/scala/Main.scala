@@ -4,7 +4,8 @@ import Chisel._
 import sys.process._
 
 object Settings {
-  val myInstFxn = {() => new TestBitserialGEMM()}
+  // frequency is 50 Mhz, baudrate is 9600
+  val myInstFxn = {() => new UART(50000000, 9600)}
 }
 
 object ChiselMain {
