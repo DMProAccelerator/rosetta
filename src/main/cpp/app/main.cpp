@@ -28,7 +28,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
 
 
   // loops for testing lots of matrices
-  for (int rr = 1; rr < 2; ++rr) {
+  for (int rr = 1; rr < 8; ++rr) {
     for (int cc = 1; cc < 8; ++cc) {
 
     ////////////// GENERATING TEST MATRICES //////////
@@ -42,7 +42,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
 
       int ar = wc;
       int ac = 1;
-      int ad = 1;
+      int ad = rr;
 
       printf("\nMatrix dim: W=(%d, %d) A=(%d, %d)\n", wr, wc, ar, ac);
       printf("\nBit depths: %d, %d\n", wd, ad);
@@ -50,8 +50,8 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       int out_rows = wr;
       int out_cols = ac;
 
-      int lhs_issigned = 1;
-      int rhs_issigned = 1;
+      int lhs_issigned = 0;
+      int rhs_issigned = 0;
       int num_chn = 1;
       
       /////////// W
@@ -147,7 +147,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       for (int i = 0; i < apr * apc * apd; ++i)
         printf("%llu ", ATP[i]);
 #endif
-#if 1
+#if 0
       printf("\nSoftware result:\n");
       for (int i = 0; i < wr; ++i) {
         for (int j = 0; j < ac; ++j) {
@@ -193,8 +193,8 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
       t.set_start(1);
       while (t.get_done()!=1);
       clock_t end = clock();
-      double hardware_elapsed = double(end-begin) / CLOCKS_PER_SEC << endl;
-      cout << "elapsed: " << hardware_elapsed << endl;
+      double hardware_elapsed = double(end-begin) / CLOCKS_PER_SEC;
+      cout << "hardware elapsed: " << hardware_elapsed << endl;
       cout << "hardware is " << software_elapsed / hardware_elapsed << " times faster." << endl;
 
       // FPGA result is produced transposed also
@@ -211,7 +211,7 @@ void Run_TestBitserialGEMM(WrapperRegDriver* platform)
           hw_result[i * out_cols + j] = r;
         }
       }
-#if 1
+#if 0
       printf("Hardware result:\n");
       for (int i = 0; i < out_rows; ++i) {
         for (int j = 0; j < out_cols; ++j) {

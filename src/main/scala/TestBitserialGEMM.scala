@@ -11,6 +11,7 @@ class TestBitserialGEMM() extends RosettaAccelerator {
   val p = PYNQParams
   val word_size = 64
   val bytes_per_elem = UInt(word_size/8, width=8)
+  val max_beats = 1
   val numMemPorts = 3
 
   val io = new RosettaAcceleratorIF(numMemPorts) {
@@ -55,7 +56,7 @@ class TestBitserialGEMM() extends RosettaAccelerator {
 
   val lsr = Module(new StreamReader(new StreamReaderParams(
     streamWidth = word_size, fifoElems = 8, mem = p.toMemReqParams(),
-    maxBeats = 1, chanID = 0, disableThrottle = true
+    maxBeats = max_beats, chanID = 0, disableThrottle = true
   ))).io
   lsr <> gemm.lhs_reader
   lsr.req <> io.memPort(0).memRdReq
@@ -64,7 +65,7 @@ class TestBitserialGEMM() extends RosettaAccelerator {
   
   val rsr = Module(new StreamReader(new StreamReaderParams(
     streamWidth = word_size, fifoElems = 8, mem = p.toMemReqParams(),
-    maxBeats = 1, chanID = 0, disableThrottle = true
+    maxBeats = max_beats, chanID = 0, disableThrottle = true
   ))).io
   rsr <> gemm.rhs_reader
   rsr.req <> io.memPort(1).memRdReq
