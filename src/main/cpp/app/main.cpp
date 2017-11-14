@@ -1,9 +1,9 @@
 #include "platform.h"
-#include "TestUART.hpp"
+#include "UART.hpp"
 #include <iostream>
 
-void Run_TestUART(WrapperRegDriver* platform){
-  TestUART t(platform);
+void Run_UART(WrapperRegDriver* platform){
+  UART t(platform);
   /* t.set_inputnavn();
    * t.get_outputnavn();
    * */
@@ -15,7 +15,7 @@ void Run_TestUART(WrapperRegDriver* platform){
 int main(){
   WrapperRegDriver * platform = initPlatform();
   
-  Run_TestUART(platform);
+  Run_UART(platform);
   deinitPlatform(platform);
   return 0;
 
