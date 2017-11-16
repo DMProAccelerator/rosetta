@@ -22,11 +22,17 @@ class Channel extends Bundle {
 class TestUART() extends RosettaAccelerator {
   val numMemPorts = 0
   val io = new RosettaAcceleratorIF(numMemPorts) {
+    val data = UInt(INPUT, 8)
+    val start = Bool(INPUT)
+    val done = Bool(OUTPUT)
   }
 
   val sender = Module(new Sender(50000000, 9600)).io
+  sender.data := io.data
+  io.done := sender.done
+  sender.start := io.start
   io.tx := sender.txd
-  
+
 }
 
 /**
@@ -126,22 +132,38 @@ class BufferedTx(frequency: Int, baudRate: Int) extends Module {
 class Sender(frequency: Int, baudRate: Int) extends Module {
   val io = new Bundle {
     val txd = Bits(OUTPUT, 1)
+    val data = UInt(INPUT, 8)
+    val start = Bool(INPUT)
+    val done = Bool(OUTPUT)
   }
 
   val tx = Module(new BufferedTx(frequency, baudRate))
 
   io.txd := tx.io.txd
 
-  // This is not super elegant
-  val hello = Array[Bits](Bits('H'), Bits('e'), Bits('l'), Bits('l'), Bits('o'))
-  val text = Vec[Bits](hello)
+  val s_idle :: s_tx :: s_done :: Nil = Enum(UInt(), 3)
+  val state = Reg(init=UInt(s_idle))
 
-  val cntReg = Reg(init = UInt(0, 3))
+  tx.io.channel.data := io.data
+  tx.io.channel.valid := Bool(false)
+  io.done := Bool(false)
 
-  tx.io.channel.data := text(cntReg)
-  tx.io.channel.valid := cntReg =/= UInt(5)
 
-  when(tx.io.channel.ready && cntReg =/= UInt(5)) {
-    cntReg := cntReg + UInt(1)
+  switch (state) {
+    is (s_idle) {
+      when (io.start) { state := s_tx }
+    }
+
+    is (s_tx) {
+      tx.io.channel.valid := Bool(true)
+      when (tx.io.channel.ready) {
+        state := s_done
+      }
+    }
+
+    is (s_done) {
+      io.done := Bool(true)
+      when (!io.start) { state := s_idle }
+    }
   }
 }
