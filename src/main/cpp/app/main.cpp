@@ -7,9 +7,11 @@ void Run_UART(WrapperRegDriver* platform){
   /* t.set_inputnavn();
    * t.get_outputnavn();
    * */
-  t.set_data(0xAA);
-  t.set_valid(1); 
-  t.set_valid(0);
+  while (1) {
+    t.set_data(0xAA);
+    t.set_valid(1); 
+    t.set_valid(0);
+  }
 }
 
 int main(){

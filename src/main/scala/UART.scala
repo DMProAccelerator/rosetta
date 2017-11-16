@@ -41,6 +41,8 @@ class UART(frequency: Int, baudRate: Int) extends RosettaAccelerator {
   val cntReg = Reg(init = UInt(0, 20))
   val bitsReg = Reg(init = UInt(0, 4))
 
+  val prevValid = Reg(next = io.valid)
+
   io.ready := (cntReg === UInt(0)) && (bitsReg === UInt(0))
   io.tx := shiftReg(0)
 
@@ -51,7 +53,7 @@ class UART(frequency: Int, baudRate: Int) extends RosettaAccelerator {
       shiftReg := Cat(Bits(1), shift(9, 0))
       bitsReg := bitsReg - UInt(1)
     }.otherwise {
-      when(io.valid) {
+      when(io.valid && (prevValid === UInt(0))) {
         shiftReg(0) := Bits(0) // start bit
         shiftReg(8, 1) := io.data // data
         shiftReg(10, 9) := Bits(3) // two stop bits
