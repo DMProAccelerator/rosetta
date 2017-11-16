@@ -4,8 +4,7 @@ import Chisel._
 import sys.process._
 
 object Settings {
-  // frequency is 50 Mhz, baudrate is 9600
-  val myInstFxn = {() => new UART(50000000, 9600)}
+  val myInstFxn = {() => new TestUART()}
 }
 
 object ChiselMain {
