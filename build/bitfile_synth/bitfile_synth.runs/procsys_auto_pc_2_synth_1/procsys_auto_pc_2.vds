@@ -1,0 +1,97 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Thu Nov 16 16:45:36 2017
+# Process ID: 21758
+# Current directory: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_auto_pc_2_synth_1
+# Command line: vivado -log procsys_auto_pc_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source procsys_auto_pc_2.tcl
+# Log file: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_auto_pc_2_synth_1/procsys_auto_pc_2.vds
+# Journal file: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_auto_pc_2_synth_1/vivado.jou
+#-----------------------------------------------------------
+source procsys_auto_pc_2.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1071.055 ; gain = 139.086 ; free physical = 1825 ; free virtual = 12240
+INFO: [Synth 8-638] synthesizing module 'procsys_auto_pc_2' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ip/procsys_auto_pc_2/synth/procsys_auto_pc_2.v:58]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_axi_protocol_converter' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4806]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_axi3_conv' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:954]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_b_downsizer' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:2276]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_b_downsizer' (1#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:2276]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_a_axi3_conv' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen' (20#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo' (21#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo__parameterized0' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen__parameterized0' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen__parameterized0' (21#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo__parameterized0' (21#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_a_axi3_conv' (22#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_w_axi3_conv' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:2004]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_w_axi3_conv' (23#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:2004]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_a_axi3_conv__parameterized0' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo__parameterized1' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-638] synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen__parameterized1' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_fifo_gen__parameterized1' (23#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:168]
+INFO: [Synth 8-256] done synthesizing module 'axi_data_fifo_v2_1_10_axic_fifo__parameterized1' (23#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/39ba/hdl/axi_data_fifo_v2_1_vl_rfs.v:64]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_a_axi3_conv__parameterized0' (23#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-638] synthesizing module 'axi_protocol_converter_v2_1_11_r_axi3_conv' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:1789]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_r_axi3_conv' (24#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:1789]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_axi3_conv' (25#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:954]
+INFO: [Synth 8-256] done synthesizing module 'axi_protocol_converter_v2_1_11_axi_protocol_converter' (26#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ipshared/df1b/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4806]
+INFO: [Synth 8-256] done synthesizing module 'procsys_auto_pc_2' (27#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ip/procsys_auto_pc_2/synth/procsys_auto_pc_2.v:58]
+Finished RTL Elaboration : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 1196.523 ; gain = 264.555 ; free physical = 1311 ; free virtual = 11733
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:05 ; elapsed = 00:01:06 . Memory (MB): peak = 1196.523 ; gain = 264.555 ; free physical = 1313 ; free virtual = 11733
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.08 . Memory (MB): peak = 1474.344 ; gain = 0.000 ; free physical = 831 ; free virtual = 11250
+Finished Constraint Validation : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 817 ; free virtual = 11240
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 817 ; free virtual = 11240
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 817 ; free virtual = 11240
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:28 ; elapsed = 00:01:30 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 826 ; free virtual = 11245
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:33 ; elapsed = 00:01:35 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 764 ; free virtual = 11184
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++-----------------------+-------------------------------------------------------------------------------+----------------+----------------------+----------------+
+|Module Name            | RTL Object                                                                    | Inference      | Size (Depth x Width) | Primitives     | 
++-----------------------+-------------------------------------------------------------------------------+----------------+----------------------+----------------+
+|fifo_generator_v13_1_3 | inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg | User Attribute | 32 x 10              | RAM32M x 2     | 
+|fifo_generator_v13_1_3 | inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg | User Attribute | 32 x 5               | RAM32M x 1     | 
+|fifo_generator_v13_1_3 | inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg | User Attribute | 32 x 1               | RAM32X1D x 1   | 
++-----------------------+-------------------------------------------------------------------------------+----------------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:50 ; elapsed = 00:01:53 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 573 ; free virtual = 10993
+Finished Timing Optimization : Time (s): cpu = 00:01:52 ; elapsed = 00:01:55 . Memory (MB): peak = 1474.344 ; gain = 542.375 ; free physical = 492 ; free virtual = 10912
+Finished Technology Mapping : Time (s): cpu = 00:01:53 ; elapsed = 00:01:55 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 473 ; free virtual = 10893
+Finished IO Insertion : Time (s): cpu = 00:01:54 ; elapsed = 00:01:56 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:54 ; elapsed = 00:01:56 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:54 ; elapsed = 00:01:57 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:54 ; elapsed = 00:01:57 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    16|
+|2     |LUT1     |    21|
+|3     |LUT2     |    54|
+|4     |LUT3     |    53|
+|5     |LUT4     |    73|
+|6     |LUT5     |   156|
+|7     |LUT6     |    87|
+|8     |RAM32M   |     3|
+|9     |RAM32X1D |     1|
+|10    |FDCE     |    69|
+|11    |FDPE     |    63|
+|12    |FDRE     |   365|
+|13    |FDSE     |     5|
++------+---------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:55 ; elapsed = 00:01:57 . Memory (MB): peak = 1475.344 ; gain = 543.375 ; free physical = 474 ; free virtual = 10893
+synth_design: Time (s): cpu = 00:01:53 ; elapsed = 00:01:55 . Memory (MB): peak = 1475.352 ; gain = 475.879 ; free physical = 467 ; free virtual = 10891

@@ -1,0 +1,724 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Thu Nov 16 16:47:50 2017
+# Process ID: 22301
+# Current directory: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_PYNQWrapper_0_0_synth_1
+# Command line: vivado -log procsys_PYNQWrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source procsys_PYNQWrapper_0_0.tcl
+# Log file: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_PYNQWrapper_0_0_synth_1/procsys_PYNQWrapper_0_0.vds
+# Journal file: /home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_PYNQWrapper_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source procsys_PYNQWrapper_0_0.tcl -notrace
+Command: synth_design -top procsys_PYNQWrapper_0_0 -part xc7z020clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 22374 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1071.047 ; gain = 139.086 ; free physical = 1773 ; free virtual = 12202
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'procsys_PYNQWrapper_0_0' [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ip/procsys_PYNQWrapper_0_0/synth/procsys_PYNQWrapper_0_0.v:56]
+INFO: [Synth 8-638] synthesizing module 'PYNQWrapper' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:663]
+INFO: [Synth 8-638] synthesizing module 'TestUART' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:338]
+INFO: [Synth 8-638] synthesizing module 'Sender' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:273]
+INFO: [Synth 8-638] synthesizing module 'BufferedTx' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:241]
+INFO: [Synth 8-638] synthesizing module 'Tx' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1]
+INFO: [Synth 8-256] done synthesizing module 'Tx' (1#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1]
+INFO: [Synth 8-638] synthesizing module 'Buffer' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:176]
+INFO: [Synth 8-256] done synthesizing module 'Buffer' (2#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:176]
+INFO: [Synth 8-256] done synthesizing module 'BufferedTx' (3#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:241]
+INFO: [Synth 8-256] done synthesizing module 'Sender' (4#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:273]
+WARNING: [Synth 8-3848] Net io_signature in module/entity TestUART does not have driver. [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:339]
+WARNING: [Synth 8-3848] Net io_led in module/entity TestUART does not have driver. [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:340]
+INFO: [Synth 8-256] done synthesizing module 'TestUART' (5#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:338]
+INFO: [Synth 8-638] synthesizing module 'RegFile' [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:369]
+INFO: [Synth 8-256] done synthesizing module 'RegFile' (6#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:369]
+WARNING: [Synth 8-350] instance 'RegFile' of module 'RegFile' requires 34 connections, but only 23 given [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+INFO: [Synth 8-256] done synthesizing module 'PYNQWrapper' (7#1) [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:663]
+INFO: [Synth 8-256] done synthesizing module 'procsys_PYNQWrapper_0_0' (8#1) [/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.srcs/sources_1/bd/procsys/ip/procsys_PYNQWrapper_0_0/synth/procsys_PYNQWrapper_0_0.v:56]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[31]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[30]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[29]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[28]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[27]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[26]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[25]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[24]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[23]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[22]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[21]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[20]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[19]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[18]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[17]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[16]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[15]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[14]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[13]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[12]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[11]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[10]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[9]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[8]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[7]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[6]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[5]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[4]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[3]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[2]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[1]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_signature[0]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_led[3]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_led[2]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_led[1]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_led[0]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_sw[1]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_sw[0]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_btn[3]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_btn[2]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_btn[1]
+WARNING: [Synth 8-3331] design TestUART has unconnected port io_btn[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_AWPROT[2]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_AWPROT[1]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_AWPROT[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_WSTRB[3]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_WSTRB[2]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_WSTRB[1]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_WSTRB[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_ARPROT[2]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_ARPROT[1]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port csr_ARPROT[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_AWREADY
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_WREADY
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BVALID
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[5]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[4]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[3]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[2]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[1]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BID[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BRESP[1]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_BRESP[0]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_ARREADY
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RVALID
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[63]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[62]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[61]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[60]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[59]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[58]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[57]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[56]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[55]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[54]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[53]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[52]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[51]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[50]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[49]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[48]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[47]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[46]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[45]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[44]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[43]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[42]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[41]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[40]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[39]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[38]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[37]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[36]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[35]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[34]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[33]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[32]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[31]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[30]
+WARNING: [Synth 8-3331] design PYNQWrapper has unconnected port mem3_RDATA[29]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1112.516 ; gain = 180.555 ; free physical = 1619 ; free virtual = 12048
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[31] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[30] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[29] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[28] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[27] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[26] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[25] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[24] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[23] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[22] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[21] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[20] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[19] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[18] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[17] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[16] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[15] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[14] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[13] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[12] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[11] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[10] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[9] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[8] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[7] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[6] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[5] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[4] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[3] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[2] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[1] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_6_bits[0] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[31] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[30] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[29] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[28] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[27] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[26] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[25] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[24] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[23] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[22] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[21] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[20] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[19] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[18] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[17] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[16] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[15] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[14] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[13] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[12] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[11] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[10] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[9] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[8] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[7] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[6] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[5] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[4] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[3] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[2] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[1] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_5_bits[0] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[31] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[30] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[29] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[28] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[27] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[26] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[25] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[24] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[23] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[22] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[21] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[20] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[19] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[18] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[17] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[16] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[15] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[14] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[13] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[12] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[11] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[10] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[9] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[8] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[7] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[6] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[5] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[4] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[3] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[2] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[1] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_2_bits[0] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_1_bits[31] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_1_bits[30] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_1_bits[29] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+WARNING: [Synth 8-3295] tying undriven pin RegFile:io_regIn_1_bits[28] to constant 0 [/home/belgau/Documents/DMPRO/rosetta/build/hw/verilog/PYNQWrapper.v:1123]
+INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1112.516 ; gain = 180.555 ; free physical = 1616 ; free virtual = 12044
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1455.055 ; gain = 0.000 ; free physical = 1031 ; free virtual = 11460
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1003 ; free virtual = 11431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1003 ; free virtual = 11431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1003 ; free virtual = 11431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 996 ; free virtual = 11425
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 9     
++---Registers : 
+	               32 Bit    Registers := 12    
+	               20 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 15    
+	   4 Input     20 Bit        Muxes := 1     
+	   3 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 3     
+	   5 Input      3 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 18    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module Tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
++---Registers : 
+	               20 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   4 Input     20 Bit        Muxes := 1     
+	   3 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module Buffer 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module Sender 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module RegFile 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 9     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 15    
+	   2 Input      1 Bit        Muxes := 8     
+Module PYNQWrapper 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   5 Input      3 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port csr_BRESP[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port csr_BRESP[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port csr_RRESP[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port csr_RRESP[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWVALID driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[31] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[30] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[29] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[28] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[27] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[26] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[25] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[24] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[23] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[22] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[21] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[20] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[19] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[18] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[17] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[16] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[15] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[14] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[13] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[12] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[11] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[10] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[9] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[8] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[7] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[6] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[5] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[4] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[3] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWADDR[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWSIZE[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWSIZE[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWSIZE[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[7] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[6] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[5] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[4] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[3] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLEN[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWBURST[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWBURST[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[5] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[4] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[3] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWID[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWLOCK driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWCACHE[3] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWCACHE[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWCACHE[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWCACHE[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWPROT[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWPROT[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWPROT[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWQOS[3] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWQOS[2] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWQOS[1] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_AWQOS[0] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WVALID driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[63] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[62] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[61] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[60] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[59] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[58] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[57] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[56] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[55] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[54] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[53] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[52] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[51] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[50] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[49] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[48] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[47] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[46] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[45] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[44] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[43] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[42] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[41] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[40] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[39] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[38] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[37] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[36] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[35] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[34] driven by constant 0
+INFO: [Synth 8-3917] design procsys_PYNQWrapper_0_0 has port mem3_WDATA[33] driven by constant 0
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3332] Sequential element (inst/TestUART/Sender/tx/tx/shiftReg_reg[11]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[31]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[30]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[29]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[28]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[27]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[26]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[25]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[24]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[23]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[22]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[21]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[20]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[19]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[18]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[17]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[16]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[15]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[14]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[13]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[12]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[11]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[10]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[9]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[8]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[7]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[6]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[5]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[1]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regRdAddr_reg[0]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[31]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[30]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[29]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[28]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[27]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[26]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[25]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[24]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[23]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[22]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[21]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[20]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[19]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[18]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[17]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[16]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[15]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[14]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[13]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[12]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[11]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[10]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[9]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[8]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[7]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[6]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[5]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[1]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/regWrAddr_reg[0]) is unused and will be removed from module procsys_PYNQWrapper_0_0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 964 ; free virtual = 11393
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1305 ; free virtual = 11734
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:57 ; elapsed = 00:00:58 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1377 ; free virtual = 11806
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1356 ; free virtual = 11785
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |     5|
+|2     |LUT1   |    21|
+|3     |LUT2   |     8|
+|4     |LUT3   |    41|
+|5     |LUT4   |    16|
+|6     |LUT5   |    19|
+|7     |LUT6   |    88|
+|8     |MUXF7  |    32|
+|9     |FDRE   |   379|
+|10    |FDSE   |     6|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------------+------------+------+
+|      |Instance       |Module      |Cells |
++------+---------------+------------+------+
+|1     |top            |            |   615|
+|2     |  inst         |PYNQWrapper |   615|
+|3     |    RegFile    |RegFile     |   441|
+|4     |    TestUART   |TestUART    |   107|
+|5     |      Sender   |Sender      |   107|
+|6     |        tx     |BufferedTx  |   103|
+|7     |          buf_ |Buffer      |    10|
+|8     |          tx   |Tx          |    93|
++------+---------------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.055 ; gain = 523.094 ; free physical = 1178 ; free virtual = 11607
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 364 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1455.055 ; gain = 100.465 ; free physical = 1185 ; free virtual = 11614
+Synthesis Optimization Complete : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 1455.062 ; gain = 523.102 ; free physical = 1185 ; free virtual = 11614
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+193 Infos, 203 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 1455.062 ; gain = 455.598 ; free physical = 1144 ; free virtual = 11574
+INFO: [Common 17-1381] The checkpoint '/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_PYNQWrapper_0_0_synth_1/procsys_PYNQWrapper_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1174] Renamed 7 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/belgau/Documents/DMPRO/rosetta/build/bitfile_synth/bitfile_synth.runs/procsys_PYNQWrapper_0_0_synth_1/procsys_PYNQWrapper_0_0.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.17 . Memory (MB): peak = 1479.066 ; gain = 0.000 ; free physical = 1142 ; free virtual = 11572
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 16 16:49:04 2017...

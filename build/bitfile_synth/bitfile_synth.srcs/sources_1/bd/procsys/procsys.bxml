@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0"
+		MinorVersion="33">
+	<CompositeFile CompositeFileTopName="procsys"
+			CanBeSetAsTop="false"
+			CanDisplayChildGraph="true">
+		<Description>Composite Fileset</Description>
+		<Generation Name="SYNTHESIS"
+				State="GENERATED"
+				Timestamp="1510847135"/>
+		<Generation Name="IMPLEMENTATION"
+				State="GENERATED"
+				Timestamp="1510847135"/>
+		<Generation Name="SIMULATION"
+				State="GENERATED"
+				Timestamp="1510847135"/>
+		<FileCollection Name="SOURCES"
+				Type="SOURCES">
+			<File Name="ip/procsys_ps7_0/procsys_ps7_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="ps7"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_PYNQWrapper_0_0/procsys_PYNQWrapper_0_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="PYNQWrapper_0"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_ps7_axi_periph_0/procsys_ps7_axi_periph_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="ps7_axi_periph"/>
+				<Properties IsEditable="false"
+						IsVisible="false"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_rst_ps7_50M_0/procsys_rst_ps7_50M_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="rst_ps7_50M"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_axi_mem_intercon_0/procsys_axi_mem_intercon_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon"/>
+				<Properties IsEditable="false"
+						IsVisible="false"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_axi_mem_intercon_1_0/procsys_axi_mem_intercon_1_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_1"/>
+				<Properties IsEditable="false"
+						IsVisible="false"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_axi_mem_intercon_2_0/procsys_axi_mem_intercon_2_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_2"/>
+				<Properties IsEditable="false"
+						IsVisible="false"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_axi_mem_intercon_3_0/procsys_axi_mem_intercon_3_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_3"/>
+				<Properties IsEditable="false"
+						IsVisible="false"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_auto_pc_0/procsys_auto_pc_0.xci"
+					Type="IP">
+				<Instance HierarchyPath="ps7_axi_periph/s00_couplers/auto_pc"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_auto_pc_1/procsys_auto_pc_1.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon/s00_couplers/auto_pc"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_auto_pc_2/procsys_auto_pc_2.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_1/s00_couplers/auto_pc"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_auto_pc_3/procsys_auto_pc_3.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_2/s00_couplers/auto_pc"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="ip/procsys_auto_pc_4/procsys_auto_pc_4.xci"
+					Type="IP">
+				<Instance HierarchyPath="axi_mem_intercon_3/s00_couplers/auto_pc"/>
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="true"
+						IsStatusTracked="true"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="hdl/procsys.v"
+					Type="Verilog">
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="false"
+						IsStatusTracked="false"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="SIMULATION"/>
+			</File>
+			<File Name="procsys_ooc.xdc"
+					Type="XDC">
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="false"
+						IsStatusTracked="false"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="SYNTHESIS"/>
+				<UsedIn Val="IMPLEMENTATION"/>
+				<UsedIn Val="OUT_OF_CONTEXT"/>
+			</File>
+			<File Name="hw_handoff/procsys.hwh"
+					Type="HwHandoff">
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="false"
+						IsStatusTracked="false"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="HW_HANDOFF"/>
+			</File>
+			<File Name="hw_handoff/procsys_bd.tcl">
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="false"
+						IsStatusTracked="false"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="HW_HANDOFF"/>
+			</File>
+			<File Name="hdl/procsys.hwdef">
+				<Properties IsEditable="false"
+						IsVisible="true"
+						Timestamp="0"
+						IsTrackable="false"
+						IsStatusTracked="false"/>
+				<Library Name="xil_defaultlib"/>
+				<UsedIn Val="HW_HANDOFF"/>
+			</File>
+		</FileCollection>
+	</CompositeFile>
+</Root>

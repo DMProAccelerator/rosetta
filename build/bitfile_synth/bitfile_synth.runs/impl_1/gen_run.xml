@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1510847413">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="BG-DRC" Name="procsys_wrapper.drc"/>
+  <File Type="BG-BGN" Name="procsys_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="procsys_wrapper.sysdef"/>
+  <File Type="BITSTR-MMI" Name="procsys_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="procsys_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="procsys_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="procsys_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="procsys_wrapper.msk"/>
+  <File Type="BG-BIN" Name="procsys_wrapper.bin"/>
+  <File Type="BG-BIT" Name="procsys_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="procsys_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="procsys_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="procsys_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="procsys_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="procsys_wrapper_postroute_physopt.dcp"/>
+  <File Type="ROUTE-CLK" Name="procsys_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="procsys_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="procsys_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="procsys_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="procsys_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="procsys_wrapper_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="procsys_wrapper_route_status.rpt"/>
+  <File Type="PLACE-CTRL" Name="procsys_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-IO" Name="procsys_wrapper_io_placed.rpt"/>
+  <File Type="PWROPT-TIMING" Name="procsys_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="procsys_wrapper_placed.dcp"/>
+  <File Type="PLACE-UTIL-PB" Name="procsys_wrapper_utilization_placed.pb"/>
+  <File Type="PHYSOPT-TIMING" Name="procsys_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PWROPT-DRC" Name="procsys_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="procsys_wrapper_pwropt.dcp"/>
+  <File Type="PLACE-UTIL" Name="procsys_wrapper_utilization_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="procsys_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="OPT-TIMING" Name="procsys_wrapper_timing_summary_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="procsys_wrapper.hwdef"/>
+  <File Type="PLACE-CLK" Name="procsys_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="RDI-RDI" Name="procsys_wrapper.vdi"/>
+  <File Type="PLACE-TIMING" Name="procsys_wrapper_timing_summary_placed.rpt"/>
+  <File Type="INIT-TIMING" Name="procsys_wrapper_timing_summary_init.rpt"/>
+  <File Type="OPT-DRC" Name="procsys_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="procsys_wrapper_opt.dcp"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="procsys_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="procsys_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="procsys_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PA-TCL" Name="procsys_wrapper.tcl"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="procsys_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="procsys_wrapper_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="procsys_wrapper_drc_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="procsys_wrapper_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="procsys_wrapper_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="procsys_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="procsys_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="procsys_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="procsys_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="procsys_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="procsys_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-PWR" Name="procsys_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="procsys_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="procsys_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="procsys_wrapper_power_routed.rpx"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../hw/verilog/PYNQWrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/procsys/procsys.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/procsys/hdl/procsys_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/main/verilog/Q_srl.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/main/verilog/DualPortBRAM.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="procsys_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../src/main/script/host/PYNQ-Z1_C.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Performance_ExtraTimingOpt" Flow="Vivado Implementation 2016"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design">
+      <Option Id="Directive">8</Option>
+    </Step>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">2</Option>
+    </Step>
+    <Step Id="route_design">
+      <Option Id="Directive">0</Option>
+    </Step>
+    <Step Id="post_route_phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">1</Option>
+    </Step>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_PYNQWrapper_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_auto_pc_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_auto_pc_4"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_ps7_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_auto_pc_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_auto_pc_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_rst_ps7_50M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="procsys_auto_pc_0"/>
+</GenRun>

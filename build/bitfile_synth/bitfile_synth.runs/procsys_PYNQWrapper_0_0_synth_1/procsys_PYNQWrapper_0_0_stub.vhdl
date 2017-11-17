@@ -1,0 +1,202 @@
+-- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+-- --------------------------------------------------------------------------------
+-- Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
+-- Date        : Thu Nov 16 16:49:02 2017
+-- Host        : belgau-ubuntu running 64-bit Ubuntu 16.04.1 LTS
+-- Command     : write_vhdl -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ procsys_PYNQWrapper_0_0_stub.vhdl
+-- Design      : procsys_PYNQWrapper_0_0
+-- Purpose     : Stub declaration of top-level module interface
+-- Device      : xc7z020clg400-1
+-- --------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
+  Port ( 
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    csr_AWREADY : out STD_LOGIC;
+    csr_AWVALID : in STD_LOGIC;
+    csr_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    csr_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    csr_WREADY : out STD_LOGIC;
+    csr_WVALID : in STD_LOGIC;
+    csr_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    csr_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    csr_BREADY : in STD_LOGIC;
+    csr_BVALID : out STD_LOGIC;
+    csr_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    csr_ARREADY : out STD_LOGIC;
+    csr_ARVALID : in STD_LOGIC;
+    csr_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    csr_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    csr_RREADY : in STD_LOGIC;
+    csr_RVALID : out STD_LOGIC;
+    csr_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    csr_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem3_AWREADY : in STD_LOGIC;
+    mem3_AWVALID : out STD_LOGIC;
+    mem3_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem3_AWSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem3_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem3_AWBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem3_AWID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem3_AWLOCK : out STD_LOGIC;
+    mem3_AWCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem3_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem3_AWQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem3_WREADY : in STD_LOGIC;
+    mem3_WVALID : out STD_LOGIC;
+    mem3_WDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem3_WSTRB : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem3_WLAST : out STD_LOGIC;
+    mem3_BREADY : out STD_LOGIC;
+    mem3_BVALID : in STD_LOGIC;
+    mem3_BID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem3_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem3_ARREADY : in STD_LOGIC;
+    mem3_ARVALID : out STD_LOGIC;
+    mem3_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem3_ARSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem3_ARLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem3_ARBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem3_ARID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem3_ARLOCK : out STD_LOGIC;
+    mem3_ARCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem3_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem3_ARQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem3_RREADY : out STD_LOGIC;
+    mem3_RVALID : in STD_LOGIC;
+    mem3_RDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem3_RID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem3_RLAST : in STD_LOGIC;
+    mem3_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem2_AWREADY : in STD_LOGIC;
+    mem2_AWVALID : out STD_LOGIC;
+    mem2_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem2_AWSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem2_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem2_AWBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem2_AWID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem2_AWLOCK : out STD_LOGIC;
+    mem2_AWCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem2_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem2_AWQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem2_WREADY : in STD_LOGIC;
+    mem2_WVALID : out STD_LOGIC;
+    mem2_WDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem2_WSTRB : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem2_WLAST : out STD_LOGIC;
+    mem2_BREADY : out STD_LOGIC;
+    mem2_BVALID : in STD_LOGIC;
+    mem2_BID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem2_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem2_ARREADY : in STD_LOGIC;
+    mem2_ARVALID : out STD_LOGIC;
+    mem2_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem2_ARSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem2_ARLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem2_ARBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem2_ARID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem2_ARLOCK : out STD_LOGIC;
+    mem2_ARCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem2_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem2_ARQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem2_RREADY : out STD_LOGIC;
+    mem2_RVALID : in STD_LOGIC;
+    mem2_RDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem2_RID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem2_RLAST : in STD_LOGIC;
+    mem2_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem1_AWREADY : in STD_LOGIC;
+    mem1_AWVALID : out STD_LOGIC;
+    mem1_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem1_AWSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem1_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem1_AWBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem1_AWID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem1_AWLOCK : out STD_LOGIC;
+    mem1_AWCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem1_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem1_AWQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem1_WREADY : in STD_LOGIC;
+    mem1_WVALID : out STD_LOGIC;
+    mem1_WDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem1_WSTRB : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem1_WLAST : out STD_LOGIC;
+    mem1_BREADY : out STD_LOGIC;
+    mem1_BVALID : in STD_LOGIC;
+    mem1_BID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem1_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem1_ARREADY : in STD_LOGIC;
+    mem1_ARVALID : out STD_LOGIC;
+    mem1_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem1_ARSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem1_ARLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem1_ARBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem1_ARID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem1_ARLOCK : out STD_LOGIC;
+    mem1_ARCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem1_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem1_ARQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem1_RREADY : out STD_LOGIC;
+    mem1_RVALID : in STD_LOGIC;
+    mem1_RDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem1_RID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem1_RLAST : in STD_LOGIC;
+    mem1_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem0_AWREADY : in STD_LOGIC;
+    mem0_AWVALID : out STD_LOGIC;
+    mem0_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem0_AWSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem0_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem0_AWBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem0_AWID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem0_AWLOCK : out STD_LOGIC;
+    mem0_AWCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem0_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem0_AWQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem0_WREADY : in STD_LOGIC;
+    mem0_WVALID : out STD_LOGIC;
+    mem0_WDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem0_WSTRB : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem0_WLAST : out STD_LOGIC;
+    mem0_BREADY : out STD_LOGIC;
+    mem0_BVALID : in STD_LOGIC;
+    mem0_BID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem0_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem0_ARREADY : in STD_LOGIC;
+    mem0_ARVALID : out STD_LOGIC;
+    mem0_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    mem0_ARSIZE : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem0_ARLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    mem0_ARBURST : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    mem0_ARID : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem0_ARLOCK : out STD_LOGIC;
+    mem0_ARCACHE : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem0_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    mem0_ARQOS : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    mem0_RREADY : out STD_LOGIC;
+    mem0_RVALID : in STD_LOGIC;
+    mem0_RDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    mem0_RID : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    mem0_RLAST : in STD_LOGIC;
+    mem0_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    io_led : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    io_sw : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    io_btn : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    io_tx : out STD_LOGIC
+  );
+
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
+
+architecture stub of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
+attribute syn_black_box : boolean;
+attribute black_box_pad_pin : string;
+attribute syn_black_box of stub : architecture is true;
+attribute black_box_pad_pin of stub : architecture is "clk,reset,csr_AWREADY,csr_AWVALID,csr_AWADDR[31:0],csr_AWPROT[2:0],csr_WREADY,csr_WVALID,csr_WDATA[31:0],csr_WSTRB[3:0],csr_BREADY,csr_BVALID,csr_BRESP[1:0],csr_ARREADY,csr_ARVALID,csr_ARADDR[31:0],csr_ARPROT[2:0],csr_RREADY,csr_RVALID,csr_RDATA[31:0],csr_RRESP[1:0],mem3_AWREADY,mem3_AWVALID,mem3_AWADDR[31:0],mem3_AWSIZE[2:0],mem3_AWLEN[7:0],mem3_AWBURST[1:0],mem3_AWID[5:0],mem3_AWLOCK,mem3_AWCACHE[3:0],mem3_AWPROT[2:0],mem3_AWQOS[3:0],mem3_WREADY,mem3_WVALID,mem3_WDATA[63:0],mem3_WSTRB[7:0],mem3_WLAST,mem3_BREADY,mem3_BVALID,mem3_BID[5:0],mem3_BRESP[1:0],mem3_ARREADY,mem3_ARVALID,mem3_ARADDR[31:0],mem3_ARSIZE[2:0],mem3_ARLEN[7:0],mem3_ARBURST[1:0],mem3_ARID[5:0],mem3_ARLOCK,mem3_ARCACHE[3:0],mem3_ARPROT[2:0],mem3_ARQOS[3:0],mem3_RREADY,mem3_RVALID,mem3_RDATA[63:0],mem3_RID[5:0],mem3_RLAST,mem3_RRESP[1:0],mem2_AWREADY,mem2_AWVALID,mem2_AWADDR[31:0],mem2_AWSIZE[2:0],mem2_AWLEN[7:0],mem2_AWBURST[1:0],mem2_AWID[5:0],mem2_AWLOCK,mem2_AWCACHE[3:0],mem2_AWPROT[2:0],mem2_AWQOS[3:0],mem2_WREADY,mem2_WVALID,mem2_WDATA[63:0],mem2_WSTRB[7:0],mem2_WLAST,mem2_BREADY,mem2_BVALID,mem2_BID[5:0],mem2_BRESP[1:0],mem2_ARREADY,mem2_ARVALID,mem2_ARADDR[31:0],mem2_ARSIZE[2:0],mem2_ARLEN[7:0],mem2_ARBURST[1:0],mem2_ARID[5:0],mem2_ARLOCK,mem2_ARCACHE[3:0],mem2_ARPROT[2:0],mem2_ARQOS[3:0],mem2_RREADY,mem2_RVALID,mem2_RDATA[63:0],mem2_RID[5:0],mem2_RLAST,mem2_RRESP[1:0],mem1_AWREADY,mem1_AWVALID,mem1_AWADDR[31:0],mem1_AWSIZE[2:0],mem1_AWLEN[7:0],mem1_AWBURST[1:0],mem1_AWID[5:0],mem1_AWLOCK,mem1_AWCACHE[3:0],mem1_AWPROT[2:0],mem1_AWQOS[3:0],mem1_WREADY,mem1_WVALID,mem1_WDATA[63:0],mem1_WSTRB[7:0],mem1_WLAST,mem1_BREADY,mem1_BVALID,mem1_BID[5:0],mem1_BRESP[1:0],mem1_ARREADY,mem1_ARVALID,mem1_ARADDR[31:0],mem1_ARSIZE[2:0],mem1_ARLEN[7:0],mem1_ARBURST[1:0],mem1_ARID[5:0],mem1_ARLOCK,mem1_ARCACHE[3:0],mem1_ARPROT[2:0],mem1_ARQOS[3:0],mem1_RREADY,mem1_RVALID,mem1_RDATA[63:0],mem1_RID[5:0],mem1_RLAST,mem1_RRESP[1:0],mem0_AWREADY,mem0_AWVALID,mem0_AWADDR[31:0],mem0_AWSIZE[2:0],mem0_AWLEN[7:0],mem0_AWBURST[1:0],mem0_AWID[5:0],mem0_AWLOCK,mem0_AWCACHE[3:0],mem0_AWPROT[2:0],mem0_AWQOS[3:0],mem0_WREADY,mem0_WVALID,mem0_WDATA[63:0],mem0_WSTRB[7:0],mem0_WLAST,mem0_BREADY,mem0_BVALID,mem0_BID[5:0],mem0_BRESP[1:0],mem0_ARREADY,mem0_ARVALID,mem0_ARADDR[31:0],mem0_ARSIZE[2:0],mem0_ARLEN[7:0],mem0_ARBURST[1:0],mem0_ARID[5:0],mem0_ARLOCK,mem0_ARCACHE[3:0],mem0_ARPROT[2:0],mem0_ARQOS[3:0],mem0_RREADY,mem0_RVALID,mem0_RDATA[63:0],mem0_RID[5:0],mem0_RLAST,mem0_RRESP[1:0],io_led[3:0],io_sw[1:0],io_btn[3:0],io_tx";
+attribute X_CORE_INFO : string;
+attribute X_CORE_INFO of stub : architecture is "PYNQWrapper,Vivado 2016.4";
+begin
+end;
