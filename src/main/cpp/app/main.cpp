@@ -19,9 +19,12 @@ typedef uint64_t u64;
 typedef int32_t s32;
 typedef int64_t s64;
 
+QBART* t;
+
 void Run_FullyConnected(WrapperRegDriver* platform) 
 {
-  QBART t(platform);
+  //QBART t(platform);
+  
  
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   std::mt19937_64 generator (seed);
@@ -29,15 +32,15 @@ void Run_FullyConnected(WrapperRegDriver* platform)
 
 
   // loops for testing lots of matrices
-  for (int rr = 1; rr < 8; ++rr) {
-    for (int cc = 1; cc < 8; ++cc) {
+  for (int rr = 1; rr < 5; ++rr) {
+    for (int cc = 1; cc < 4; ++cc) {
 
     ////////////// GENERATING TEST MATRICES //////////
 
       int word_size = 64;
       
-      int wr = rr;
-      int wc = 64*cc;
+      int wr = 23*rr;
+      int wc = 31*cc;
       int wd = 2;
       s64 W[wr*wc];
 
@@ -45,8 +48,8 @@ void Run_FullyConnected(WrapperRegDriver* platform)
       int ac = 1;
       int ad = 2;
 
-      printf("\nMatrix dim: W=(%d, %d) A=(%d, %d)\n", wr, wc, ar, ac);
-      printf("\nBit depths: %d, %d\n", wd, ad);
+      //printf("\nMatrix dim: W=(%d, %d) A=(%d, %d)\n", wr, wc, ar, ac);
+      //printf("\nBit depths: %d, %d\n", wd, ad);
 
       int out_rows = wr;
       int out_cols = ac;
@@ -144,6 +147,9 @@ void Run_FullyConnected(WrapperRegDriver* platform)
         }
         printf("\n");
       }
+#endif
+      
+#if 0
 
       printf("\nPACKED W:\n");
       for (int i = 0; i < WP_len; ++i) {
@@ -153,7 +159,8 @@ void Run_FullyConnected(WrapperRegDriver* platform)
       for (int i = 0; i < ATP_len; ++i)
         printf("%llu ", ATP[i]);
 #endif
-#if 1
+      
+#if 0
       printf("\nSoftware result:\n");
       for (int i = 0; i < wr; ++i) {
         for (int j = 0; j < ac; ++j) {
@@ -179,38 +186,38 @@ void Run_FullyConnected(WrapperRegDriver* platform)
       platform->copyBufferHostToAccel(ATP, dram_a, a_bytes);
 
       // Send metadata for the packed matrices to the FPGA
-      t.set_lhs_addr((AccelDblReg) dram_w);
-      t.set_rhs_addr((AccelDblReg) dram_a);
-      t.set_res_addr((AccelDblReg) dram_r);
+      t->set_lhs_addr((AccelDblReg) dram_w);
+      t->set_rhs_addr((AccelDblReg) dram_a);
+      t->set_res_addr((AccelDblReg) dram_r);
 
-      t.set_lhs_rows(wpr);
-      t.set_lhs_cols(wpc);
-      t.set_lhs_bits(wpd);
-      t.set_lhs_issigned(lhs_issigned);
+      t->set_lhs_rows(wpr);
+      t->set_lhs_cols(wpc);
+      t->set_lhs_bits(wpd);
+      t->set_lhs_issigned(lhs_issigned);
 
-      t.set_rhs_rows(apr);
-      t.set_rhs_cols(apc);
-      t.set_rhs_bits(apd);
-      t.set_rhs_issigned(rhs_issigned);
+      t->set_rhs_rows(apr);
+      t->set_rhs_cols(apc);
+      t->set_rhs_bits(apd);
+      t->set_rhs_issigned(rhs_issigned);
 
-      t.set_fc(1);
+      t->set_fc(1);
 
-      t.set_num_chn(num_chn);
+      t->set_num_chn(num_chn);
 
-      t.set_start(1);
-      while (t.get_done()!=1);
+      t->set_start(1);
+      while (t->get_done()!=1);
 
       // FPGA result is produced transposed also
       s64 *hw_result_trans = new s64[out_len];
       platform->copyBufferAccelToHost(dram_r, hw_result_trans, r_bytes); 
 
-      t.set_start(0);
-      t.set_fc(0);
+      t->set_start(0);
+      t->set_fc(0);
 
       ////////////  NEED TO DO THIS IN SOFTWARE
       // numpy.transpose(matrix7, axes=(1, 0, 2)).tolist()
       ////////////
-#if 1
+#if 0
       printf("hardware_result:\n");
       for (int i = 0; i < out_len; ++i)
         printf("%lld ", hw_result_trans[i]);
@@ -251,8 +258,9 @@ void print_lsb(uint8_t i){
 //Module takes in image of form channel/bitplane/row/column, outputs channel/row/column/bitplane convoluted image
 void Run_Convolution(WrapperRegDriver* platform) 
 {
-  QBART t(platform);
   //cout << "Signature: " << hex << t.get_signature() << dec << endl;
+
+  printf("\n\nStarting convolution \n");
   
   // Random generator
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -260,13 +268,13 @@ void Run_Convolution(WrapperRegDriver* platform)
 
   const int word_size_in_bits = 64;
     
-  const int num_input_channels = 3, num_output_channels = 9,
-    num_input_bitplanes = 4;
+  const int num_input_channels = 3, num_output_channels = 4,
+    num_input_bitplanes = 6;
     
-  const int image_width = 27, image_height = 27;
+  const int image_width = 15, image_height = 19;
 
   const int window_size = 11, strideExponent = 2;
-  const int num_filter_bitplanes = 5;
+  const int num_filter_bitplanes = 3;
 
   const int stride = 1 << strideExponent;
 
@@ -420,32 +428,32 @@ void Run_Convolution(WrapperRegDriver* platform)
   platform->copyBufferHostToAccel(packed_image, dram_image, packed_image_size_in_bytes);
   platform->copyBufferHostToAccel(packed_filters, dram_filters, packed_filters_size_in_bytes);
   
-  t.set_imageAddr((AccelDblReg)dram_image);
-  t.set_filterAddr((AccelDblReg)dram_filters);
-  t.set_outputAddr((AccelDblReg)dram_result);
-  t.set_tempAddr((AccelDblReg)temp_buffer);
+  t->set_imageAddr((AccelDblReg)dram_image);
+  t->set_filterAddr((AccelDblReg)dram_filters);
+  t->set_outputAddr((AccelDblReg)dram_result);
+  t->set_tempAddr((AccelDblReg)temp_buffer);
   
-  t.set_imageWidth(image_width);
-  t.set_imageHeight(image_height);
-  t.set_imageNumBits(num_input_bitplanes);
-  t.set_imageNumChannels(num_input_channels);
+  t->set_imageWidth(image_width);
+  t->set_imageHeight(image_height);
+  t->set_imageNumBits(num_input_bitplanes);
+  t->set_imageNumChannels(num_input_channels);
   
-  t.set_strideExponent(strideExponent);
-  t.set_windowSize(window_size);
-  t.set_numOutputChannels(num_output_channels);
-  t.set_filtersNumBits(num_filter_bitplanes);
+  t->set_strideExponent(strideExponent);
+  t->set_windowSize(window_size);
+  t->set_numOutputChannels(num_output_channels);
+  t->set_filtersNumBits(num_filter_bitplanes);
 
-  t.set_conv(1);
+  t->set_conv(1);
   
-  t.set_start(1);
+  t->set_start(1);
 
-  while(!t.get_finishedWithSlidingWindow());
+  while(!t->get_finishedWithSlidingWindow());
   printf("Finished sliding window\n");
   
-  while(!t.get_done());
+  while(!t->get_done());
 
-  t.set_start(0);
-  t.set_conv(0);
+  t->set_start(0);
+  t->set_conv(0);
   printf("Finished entire convolution!\n");
 
   int64_t accel_result[expected_result_num_elements];
@@ -461,7 +469,7 @@ void Run_Convolution(WrapperRegDriver* platform)
     }
   }
   
-#if 1
+#if 0
   printf("Image: \n");
   for(int i = 0; i < num_input_channels; i++){
     printf("Channel %d\n", i);
@@ -496,7 +504,7 @@ void Run_Convolution(WrapperRegDriver* platform)
 #endif
 
 
-#if 1
+#if 0
   printf("Filters: \n");
   for(int i = 0; i < num_output_channels; i++){
     printf("Output channel %d\n", i);
@@ -515,7 +523,7 @@ void Run_Convolution(WrapperRegDriver* platform)
 #endif
 
 
-#if 1
+#if 0
   printf("Packed filters (LSB): \n");
   for(int i = 0; i < num_filter_bitplanes; i++){
     printf("Bitplane %d:\n", i);
@@ -538,7 +546,7 @@ void Run_Convolution(WrapperRegDriver* platform)
 #endif
 
   
-#if 1
+#if 0
   uint8_t sliding_result[ws_size_in_bytes];
   platform->copyBufferAccelToHost(temp_buffer, sliding_result, ws_size_in_bytes);
   
@@ -558,7 +566,7 @@ void Run_Convolution(WrapperRegDriver* platform)
 #endif
 
 
-#if 1
+#if 0
   printf("Expected result: \n");
   for(int c = 0; c < num_output_channels; c++){
     printf("Channel %d:\n", c);
@@ -590,7 +598,7 @@ void Run_Convolution(WrapperRegDriver* platform)
   printf("\n");
 #endif
 
-#if 1
+#if 0
   printf("Transposed accel result: \n");
   printf("Accel result: \n");
   for(int c = 0; c < num_output_channels; c++){
@@ -617,7 +625,7 @@ void Run_Convolution(WrapperRegDriver* platform)
   }
 
   if(equal){
-    printf("The results were equal!\n");
+    printf("The results were equal!\n\n");
   }
 
   platform->deallocAccelBuffer(dram_image);
@@ -630,9 +638,14 @@ int main()
 {
   WrapperRegDriver * platform = initPlatform();
 
-  Run_FullyConnected(platform);
-  Run_Convolution(platform);
+  QBART tt(platform);
+  t = &tt;
 
+  for(int i = 0; i < 4; i++){
+    Run_Convolution(platform);
+    Run_FullyConnected(platform);
+  }
+  
   deinitPlatform(platform);
   return 0;
 }
