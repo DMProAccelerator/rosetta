@@ -37,7 +37,7 @@ class QBART() extends RosettaAccelerator {
     val rhs_issigned = Bool(INPUT)
     val num_chn = UInt(INPUT, width = 16)
 
-    /////// TODO: CONVOLUTION IO
+    /////// CONVOLUTION IO
 
     val imageAddr = UInt(INPUT, width=64)
     val filterAddr = UInt(INPUT, width=64)
@@ -60,46 +60,6 @@ class QBART() extends RosettaAccelerator {
     /////// TODO: THRESHOLDING IO
 
   }
-
-  /*
-  def print_total_state() = {
-    lhs_addr 
-    rhs_addr 
-    res_addr 
-
-    lhs_rows 
-    lhs_cols 
-    lhs_bits 
-    lhs_issigned
-
-    rhs_rows
-    rhs_cols
-    rhs_bits
-    rhs_issigned
-    num_chn
-
-    imageAddr 
-    filterAddr
-    outputAddr
-    tempAddr
-
-    imageWidth
-    imageHeight
-    imageNumBits
-    imageNumChannels
-
-    strideExponent
-    windowSize
-    numOutputChannels
-
-    filtersNumBits
-
-    finishedWithSlidingWindow
-
-   
-    
-  }
-  */
   
 
   // Default io
